@@ -20,6 +20,7 @@ spring:
 
 
   # mongoDB
-#  data:
-#    mongodb:
-#    #uri: mongodb+srv://S09P13B304:ssafy@ssafy.ngivl.mongodb.net/S09P13B304?authSource=admin
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/tutorial
+
