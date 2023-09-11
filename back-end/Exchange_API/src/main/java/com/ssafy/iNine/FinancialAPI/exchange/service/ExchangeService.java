@@ -2,9 +2,12 @@ package com.ssafy.iNine.FinancialAPI.exchange.service;
 
 import com.ssafy.iNine.FinancialAPI.common.exception.CommonException;
 import com.ssafy.iNine.FinancialAPI.common.exception.ExceptionType;
+import com.ssafy.iNine.FinancialAPI.entity.Country;
 import com.ssafy.iNine.FinancialAPI.entity.Exchange;
 import com.ssafy.iNine.FinancialAPI.exchange.dto.Bank;
+import com.ssafy.iNine.FinancialAPI.exchange.dto.CountryDto;
 import com.ssafy.iNine.FinancialAPI.exchange.dto.ExchangeDto;
+import com.ssafy.iNine.FinancialAPI.exchange.repository.CountryRepository;
 import com.ssafy.iNine.FinancialAPI.exchange.repository.ExchangeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,23 +40,24 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ExchangeService {
     private final ExchangeRepository exchangeRepository;
+    private final CountryRepository countryRepository;
     private static HttpURLConnection connection;
     private static BigDecimal defaultExchangeRate = BigDecimal.valueOf(1300);
     
 
-    public List<List<ExchangeDto>> getMyBank() throws IOException {
-        List<List<ExchangeDto>> exchangeList = new ArrayList<>();
+    public List<List<ExchangeDto.All>> getMyBank() throws IOException {
+        List<List<ExchangeDto.All>> exchangeList = new ArrayList<>();
 //        List<String> codes = Arrays.asList("005", "020", "004", "088", "011", "003", "023");
         List<Bank> banks = Arrays.asList(Bank.values());
 
         for(int b=0; b<banks.size(); b++) {
-            List<ExchangeDto> bankList = new ArrayList<>();
+            List<ExchangeDto.All> bankList = new ArrayList<>();
             String URL = "https://www.mibank.me/exchange/bank/index.php?search_code="+ banks.get(b).getCode();
             Document doc = Jsoup.connect(URL).get();
             Elements countryList = doc.select("tbody tr");
             for(int i=0; i<countryList.size(); i++) {
                 Elements country = countryList.get(i).select("td");
-                ExchangeDto exchangeDto = new ExchangeDto();
+                ExchangeDto.All exchangeDto = new ExchangeDto.All();
                 exchangeDto.setBank(banks.get(b).getName());
                 exchangeDto.setCountry(country.get(1).text());
                 if(country.get(2).text().equals("-")) continue;
@@ -236,5 +240,70 @@ public class ExchangeService {
         List<Exchange> exchangeList = exchangeRepository.findAll();
         map.put("list", exchangeList);
         return map;
+    }
+
+    public List<CountryDto> getCountryList() {
+        List<Country> countryList = countryRepository.findAll();
+        List<CountryDto> countryDtoList = new ArrayList<>();
+        for(Country country: countryList) {
+            countryDtoList.add(CountryDto.of(country));
+        }
+        return countryDtoList;
+    }
+
+    public List<ExchangeDto.All> getCountryExchange(Long countryId) {
+        List<ExchangeDto.All> exchangeDtoList = new ArrayList<>();
+
+        Country country = countryRepository.findById(countryId)
+                .orElseThrow(() -> new CommonException(ExceptionType.COUNTRY_NOT_FOUND));
+
+        List<Exchange> exchangeList = exchangeRepository.findByCountry(country.getName());
+        for(Exchange exchange: exchangeList) {
+            exchangeDtoList.add(ExchangeDto.All.of(exchange));
+        }
+
+        return exchangeDtoList;
+    }
+
+    public List<ExchangeDto.Buy> getBuyCountryExchange(Long countryId) {
+        List<ExchangeDto.Buy> exchangeDtoList = new ArrayList<>();
+
+        Country country = countryRepository.findById(countryId)
+                .orElseThrow(() -> new CommonException(ExceptionType.COUNTRY_NOT_FOUND));
+
+        List<Exchange> exchangeList = exchangeRepository.findByCountryOrderByCashBuyPriceAsc(country.getName());
+        for(Exchange exchange: exchangeList) {
+            exchangeDtoList.add(ExchangeDto.Buy.of(exchange));
+        }
+
+        return exchangeDtoList;
+    }
+
+    public List<ExchangeDto.Sell> getSellCountryExchange(Long countryId) {
+        List<ExchangeDto.Sell> exchangeDtoList = new ArrayList<>();
+
+        Country country = countryRepository.findById(countryId)
+                .orElseThrow(() -> new CommonException(ExceptionType.COUNTRY_NOT_FOUND));
+
+        List<Exchange> exchangeList = exchangeRepository.findByCountryOrderByCashSellPriceDesc(country.getName());
+        for(Exchange exchange: exchangeList) {
+            exchangeDtoList.add(ExchangeDto.Sell.of(exchange));
+        }
+
+        return exchangeDtoList;
+    }
+
+    public List<ExchangeDto.Transfer> getTransferCountryExchange(Long countryId) {
+        List<ExchangeDto.Transfer> exchangeDtoList = new ArrayList<>();
+
+        Country country = countryRepository.findById(countryId)
+                .orElseThrow(() -> new CommonException(ExceptionType.COUNTRY_NOT_FOUND));
+
+        List<Exchange> exchangeList = exchangeRepository.findByCountryOrderByTransferPriceAsc(country.getName());
+        for(Exchange exchange: exchangeList) {
+            exchangeDtoList.add(ExchangeDto.Transfer.of(exchange));
+        }
+
+        return exchangeDtoList;
     }
 }
