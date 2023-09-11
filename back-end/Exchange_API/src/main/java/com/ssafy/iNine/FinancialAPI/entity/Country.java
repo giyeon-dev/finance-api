@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
-@ToString(of = {"id", "name"})
+@ToString(of = {"countryId", "name"})
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

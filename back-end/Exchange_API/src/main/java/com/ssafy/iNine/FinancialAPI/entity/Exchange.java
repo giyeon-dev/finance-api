@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
-@ToString(of = {"id", "bank", "country", "price"})
+@ToString(of = {"exchangeId", "bank", "country", "price"})
 public class Exchange {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
