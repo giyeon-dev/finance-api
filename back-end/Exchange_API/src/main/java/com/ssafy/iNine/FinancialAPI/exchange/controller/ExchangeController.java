@@ -29,16 +29,22 @@ public class ExchangeController {
         return new DataResponse<Map<String, Object>>(200, "환율 정보 조회 성공", exchangeList);
     }
 
+    @GetMapping("/exchange/{bankCode}")
+    public DataResponse<List<ExchangeDto.All>> exchangeBank(@PathVariable String bankCode) throws IOException {
+        List<ExchangeDto.All> exchangeList = exchangeService.getExchangeBankList(bankCode);
+        return new DataResponse<List<ExchangeDto.All>>(200, "은행 환율 정보 조회 성공", exchangeList);
+    }
+
     @GetMapping("/exchange/country")
     public DataResponse<List<CountryDto>> getCountry() throws IOException {
         List<CountryDto> countryList = exchangeService.getCountryList();
         return new DataResponse<List<CountryDto>>(200, "나라 조회 성공", countryList);
     }
 
-    @GetMapping("/exchange/{countryId}")
+    @GetMapping("/exchange/country/{countryId}")
     public DataResponse<List<ExchangeDto.All>> getCountryExchange(@PathVariable Long countryId) throws IOException {
         List<ExchangeDto.All> exchangeList = exchangeService.getCountryExchange(countryId);
-        return new DataResponse<List<ExchangeDto.All>>(200, "은행별 나라 환율 조회 성공", exchangeList);
+        return new DataResponse<List<ExchangeDto.All>>(200, "나라별 환율 조회 성공", exchangeList);
     }
 
     @GetMapping("/exchange/buy/{countryId}")
@@ -58,6 +64,8 @@ public class ExchangeController {
         List<ExchangeDto.Transfer> exchangeList = exchangeService.getTransferCountryExchange(countryId);
         return new DataResponse<List<ExchangeDto.Transfer>>(200, "은행별 나라 송금할 때 환율 조회 성공", exchangeList);
     }
+
+    //================================테스트용=============================
 
     @GetMapping("/exchange/crawling")
     public DataResponse<List<List<ExchangeDto.All>>> crawlingExchange() throws IOException {
