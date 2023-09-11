@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
 @ToString(of = {"id", "bank", "country", "price"})
-@DynamicInsert
 public class Exchange {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

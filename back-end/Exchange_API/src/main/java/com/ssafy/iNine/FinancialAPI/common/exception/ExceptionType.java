@@ -21,6 +21,7 @@ public enum ExceptionType {
     DUPLICATED_NICKNAME(4103, "중복된 닉네임입니다."),
 
     EXHANGE_NOT_FOUND(4200, "환율 정보가 존재하지 않습니다."),
+    COUNTRY_NOT_FOUND(4201, "나라 정보가 존재하지 않습니다."),
 
     GLOBAL_EXCEPTION(5000, "알 수 없는 예외가 발생하습니다.");
 
