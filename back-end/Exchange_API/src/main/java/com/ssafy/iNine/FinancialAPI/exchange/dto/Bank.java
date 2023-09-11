@@ -28,4 +28,12 @@ public enum Bank {
     public String getName() { return name; }
     public String getCode() { return code; }
 
+    public static String getNameByCode(String code) {
+        for (Bank bank : Bank.values()) {
+            if (bank.code.equals(code)) {
+                return bank.name;
+            }
+        }
+        return null;
+    }
 }

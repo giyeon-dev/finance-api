@@ -5,6 +5,7 @@ import com.ssafy.iNine.FinancialAPI.common.exception.ExceptionType;
 import com.ssafy.iNine.FinancialAPI.entity.Country;
 import com.ssafy.iNine.FinancialAPI.entity.Exchange;
 import com.ssafy.iNine.FinancialAPI.exchange.dto.Bank;
+import com.ssafy.iNine.FinancialAPI.exchange.dto.BankDto;
 import com.ssafy.iNine.FinancialAPI.exchange.dto.CountryDto;
 import com.ssafy.iNine.FinancialAPI.exchange.dto.ExchangeDto;
 import com.ssafy.iNine.FinancialAPI.exchange.repository.CountryRepository;
@@ -33,7 +34,6 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -233,8 +233,10 @@ public class ExchangeService {
         Map<String, Object> map = new HashMap<>();
 
         List<Bank> bankList = Arrays.asList(Bank.values());
-        List<String> banks = new ArrayList<>();
-        for(int i=0; i<bankList.size(); i++) banks.add(bankList.get(i).getName());
+        List<BankDto> banks = new ArrayList<>();
+        for(Bank bank: bankList) {
+            banks.add(BankDto.of(bank));
+        }
         map.put("bank", banks);
 
         List<Exchange> exchangeList = exchangeRepository.findAll();
@@ -304,6 +306,17 @@ public class ExchangeService {
             exchangeDtoList.add(ExchangeDto.Transfer.of(exchange));
         }
 
+        return exchangeDtoList;
+    }
+
+    public List<ExchangeDto.All> getExchangeBankList(String bankCode) {
+        List<ExchangeDto.All> exchangeDtoList = new ArrayList<>();
+        String bankName = Bank.getNameByCode(bankCode);
+        List<Exchange> exchangeList = exchangeRepository.findByBank(bankName);
+
+        for(Exchange exchange: exchangeList) {
+            exchangeDtoList.add(ExchangeDto.All.of(exchange));
+        }
         return exchangeDtoList;
     }
 }

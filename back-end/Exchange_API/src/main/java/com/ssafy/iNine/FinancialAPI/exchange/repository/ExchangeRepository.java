@@ -16,4 +16,6 @@ public interface ExchangeRepository extends JpaRepository<Exchange, Long> {
     List<Exchange> findByCountryOrderByCashSellPriceDesc(String name);
 
     List<Exchange> findByCountryOrderByTransferPriceAsc(String name);
+
+    List<Exchange> findByBank(String bankName);
 }
