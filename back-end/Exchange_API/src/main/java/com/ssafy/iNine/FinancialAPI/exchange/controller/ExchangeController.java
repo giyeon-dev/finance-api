@@ -15,10 +15,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
+@Slf4j
 @RestController
 @RequiredArgsConstructor
-@Slf4j
 public class ExchangeController {
 
     private final ExchangeService exchangeService;
