@@ -16,17 +16,21 @@ public class UserDto {
     public static class RegistForm {
         private String email;
         private String password;
-        private String ssafyClass;
+        private String userClass;
         private String area;
         private String content;
         private String url;
+
+        public void encodePassword(String password) {
+            this.password = password;
+        }
     }
 
     @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Login {
+    public static class LoginForm {
         private String email;
         private String password;
     }
@@ -60,6 +64,8 @@ public class UserDto {
         private LocalDateTime createdTime;
         private LocalDateTime deletedTime;
         private Boolean isDeleted;
+
+
     }
 
 }

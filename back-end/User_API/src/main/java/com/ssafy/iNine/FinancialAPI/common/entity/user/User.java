@@ -27,7 +27,7 @@ public class User {
     private String password;
 
     @Column(name = "class")
-    private Byte userClass;
+    private String userClass;
 
     @Column(name = "area", length = 30)
     private String area;
@@ -42,11 +42,9 @@ public class User {
     private String url;
 
     @Column(name = "created_time")
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdTime;
 
     @Column(name = "deleted_time")
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime deletedTime;
 
     @Column(name = "is_deleted")
