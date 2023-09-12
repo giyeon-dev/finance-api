@@ -6,7 +6,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # 호스트 머신에서 JAR 파일을 복사합니다.
-COPY target/your-spring-boot-app.jar app.jar
+COPY build/libs/*.jar app.jar
 
 # JAR 파일 실행
 CMD ["java", "-jar", "app.jar"]
