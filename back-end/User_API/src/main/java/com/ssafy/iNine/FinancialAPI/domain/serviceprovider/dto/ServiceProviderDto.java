@@ -1,13 +1,12 @@
-package com.ssafy.iNine.FinancialAPI.domain.user.dto;
+package com.ssafy.iNine.FinancialAPI.domain.serviceprovider.dto;
 
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Getter
 @Setter
-public class UserDto {
+public class ServiceProviderDto {
 
     @Getter
     @Setter
@@ -16,7 +15,7 @@ public class UserDto {
     public static class RegistForm {
         private String email;
         private String password;
-        private String userClass;
+        private String user_class;
         private String area;
         private String content;
         private String url;
@@ -42,13 +41,13 @@ public class UserDto {
     public static class detail {
         private String email;
         private String password;
-        private String ssafyClass;
+        private String ssafy_class;
         private String area;
         private String content;
         private String url;
-        private LocalDateTime createdTime;
-        private LocalDateTime deletedTime;
-        private Boolean isDeleted;
+        private LocalDateTime created_time;
+        private LocalDateTime deleted_time;
+        private Boolean is_deleted;
     }
     @Getter
     @Setter
@@ -57,15 +56,13 @@ public class UserDto {
     public static class info {
         private String email;
         private String password;
-        private String ssafyClass;
+        private String ssafy_class;
         private String area;
         private String content;
         private String url;
-        private LocalDateTime createdTime;
-        private LocalDateTime deletedTime;
-        private Boolean isDeleted;
-
-
+        private LocalDateTime created_time;
+        private LocalDateTime deleted_time;
+        private Boolean is_deleted;
     }
 
 }

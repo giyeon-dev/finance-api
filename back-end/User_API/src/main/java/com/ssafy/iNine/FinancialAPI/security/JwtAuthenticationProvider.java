@@ -1,7 +1,7 @@
 package com.ssafy.iNine.FinancialAPI.security;
 
-import com.ssafy.iNine.FinancialAPI.common.entity.user.User;
-import com.ssafy.iNine.FinancialAPI.domain.user.service.AuthService;
+import com.ssafy.iNine.FinancialAPI.common.entity.user.ServiceProvider;
+import com.ssafy.iNine.FinancialAPI.domain.serviceprovider.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,13 +22,13 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
         String email = authentication.getName();
         String password = (String) authentication.getCredentials();
 
-        User user = authService.getUserInfo(email);
+        ServiceProvider serviceProvider = authService.getUserInfo(email);
 
-        if (!this.passwordEncoder.matches(password, user.getPassword())) {
+        if (!this.passwordEncoder.matches(password, serviceProvider.getPassword())) {
             throw new BadCredentialsException("password is not matched");
         }
 
-        return new UsernamePasswordAuthenticationToken(user, null, null);
+        return new UsernamePasswordAuthenticationToken(serviceProvider, null, null);
     }
 
     @Override

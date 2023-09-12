@@ -22,15 +22,13 @@ public class JwtUtil {
     private String jwtSecretKeyValue;
 
     private static String jwtSecret;
-
     @PostConstruct
     private void init() {
         jwtSecret = jwtSecretKeyValue;
     }
 
     public static String generateAccessToken(String userId) {
-//        Long expirationTime = 1000L * 60 * 10;  // 10분
-        Long expirationTime = 1000L * 60 * 60 * 24 * 50;  // 10분
+        Long expirationTime = 1000L * 60 * 20;  // 20분
         return generateToken(userId, "access-token", expirationTime);
     }
 
@@ -55,6 +53,25 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS256, jwtSecret)
                 .compact();
     }
+
+    public static String generateApiToken(String email) {
+        Instant now = Instant.now();
+        //유효기간 1년
+        Instant expirationInstant = now.plusMillis(365L * 24 * 60 * 60 * 1000);
+
+        Claims claims = Jwts.claims();
+        claims.put("email", email);
+        claims.setExpiration(Date.from(expirationInstant));
+        claims.setSubject("api-token");
+
+        return Jwts.builder()
+                .setHeaderParam("typ", "JWT")
+                .setHeaderParam("regDate", now.toEpochMilli())
+                .setClaims(claims)
+                .signWith(SignatureAlgorithm.HS256, jwtSecret)
+                .compact();
+    }
+
 
     public static boolean isExpired(String token) {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody()

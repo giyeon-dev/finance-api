@@ -1,24 +1,23 @@
 package com.ssafy.iNine.FinancialAPI.common.entity.user;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @Builder
-@Table(name = "user")
-public class User {
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@Table(name="service_provider")
+public class ServiceProvider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "service_provider_id")
+    private Long serviceProviderId;
 
     @Column(name = "email", length = 100)
     private String email;
