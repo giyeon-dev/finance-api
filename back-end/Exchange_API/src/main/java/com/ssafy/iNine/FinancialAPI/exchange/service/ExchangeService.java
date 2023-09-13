@@ -77,12 +77,14 @@ public class ExchangeService {
         return exchangeList;
     }
 
-    @Async
 //    @Scheduled(fixedDelay = 5000)
-    @Scheduled(fixedDelay = 300000)
+    @Async
+    @Scheduled(fixedDelay = 180000) // 3분
     @Transactional
     public void updateExchange() throws IOException {
+        if(exchangeRepository.findAll().size() == 0) insertExchange();
         System.out.println("환율 업데이트");
+        long startTime = System.currentTimeMillis();
         List<Bank> banks = Arrays.asList(Bank.values());
 
         for(int b=0; b<banks.size(); b++) {
@@ -117,7 +119,10 @@ public class ExchangeService {
                 exchange.setPrice(new BigDecimal(country.get(8).text()));
             }
         }
+        long endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime));
     }
+
 
     public void insertExchange() throws IOException {
         List<Bank> banks = Arrays.asList(Bank.values());
@@ -239,10 +244,16 @@ public class ExchangeService {
         }
         map.put("bank", banks);
 
+        System.out.println("환율 가져오기");
+        long startTime = System.currentTimeMillis();
         List<Exchange> exchangeList = exchangeRepository.findAll();
+        long endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime));
         map.put("list", exchangeList);
         return map;
     }
+
+
 
     public List<CountryDto> getCountryList() {
         List<Country> countryList = countryRepository.findAll();
