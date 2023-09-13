@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email 인증 페이지</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Email 인증</h1>
+    <form id="email-form" action="/user/login", method="post">
+        <div class="form-group">
+            <label for="email">id</label>
+            <input type="text" id="username" name="username" th:required="required">
+        </div>
+        <div class="form-group">
+            <input type="text" id="password" name="password" th:required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit">인증 메일 보내기</button>
+        </div>
+    </form>
+    <div id="confirmation-message" th:classappend="${confirmationMessage != null} ? '' : 'hidden'">
+        <p>인증 메일을 확인해주세요. 인증 코드를 입력해주세요.</p>
+        <form id="confirmation-form" th:action="@{/process-confirmation}">
+            <div class="form-group">
+                <label for="code">인증 코드</label>
+                <input type="text" id="code" name="code" th:required="required">
+            </div>
+            <div class="form-group">
+                <button type="submit">확인</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

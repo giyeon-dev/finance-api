@@ -1,0 +1,32 @@
+server:
+  port: 8085
+
+
+spring:
+  jackson:
+    time-zone: Asia/Seoul
+
+    thymeleaf:
+      prefix: classpath:/templates/
+      suffix: .html
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/i9?serverTimezone=Asia/Seoul
+    username: root
+    password: ssafy
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+
+#      ddl-auto: update
+
+jwt:
+  secretKey: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHVhb3JpYWkta3ByaW5nYm9vdC1qd3QtdHV0b3JpYWk=
+
+  # mongoDB
+#  data:
+#    mongodb:
+#    #uri: mongodb+srv://S09P13B304:ssafy@ssafy.ngivl.mongodb.net/S09P13B304?authSource=admin
