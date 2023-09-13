@@ -1,7 +1,7 @@
 package com.ssafy.iNine.FinancialAPI.card.repository;
 
 import com.ssafy.iNine.FinancialAPI.entity.Card;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CardRepository extends MongoRepository<Card, String> {
+public interface CardRepository extends JpaRepository<Card, String> {
 }
