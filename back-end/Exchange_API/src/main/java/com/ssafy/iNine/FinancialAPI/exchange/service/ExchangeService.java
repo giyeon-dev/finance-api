@@ -19,6 +19,7 @@ import org.json.simple.parser.ParseException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -41,9 +42,9 @@ import java.util.*;
 public class ExchangeService {
     private final ExchangeRepository exchangeRepository;
     private final CountryRepository countryRepository;
+    private final RedisTemplate<String, Object> redisTemplate;
     private static HttpURLConnection connection;
     private static BigDecimal defaultExchangeRate = BigDecimal.valueOf(1300);
-    
 
     public List<List<ExchangeDto.All>> getMyBank() throws IOException {
         List<List<ExchangeDto.All>> exchangeList = new ArrayList<>();
@@ -79,7 +80,7 @@ public class ExchangeService {
 
 //    @Scheduled(fixedDelay = 5000)
     @Async
-    @Scheduled(fixedDelay = 180000) // 3분
+    @Scheduled(fixedDelay = 120000) // 2분
     @Transactional
     public void updateExchange() throws IOException {
         if(exchangeRepository.findAll().size() == 0) insertExchange();
