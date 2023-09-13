@@ -1,5 +1,5 @@
 server:
-  port: 9999
+  port: 8085
 
 
 spring:
@@ -15,9 +15,12 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
+#      ddl-auto: update
 
+jwt:
+  secretKey: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHVhb3JpYWkta3ByaW5nYm9vdC1qd3QtdHV0b3JpYWk=
 
   # mongoDB
 #  data:
