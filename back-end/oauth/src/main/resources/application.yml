@@ -1,32 +1,19 @@
-server:
-  port: 8085
-
-
 spring:
-  jackson:
-    time-zone: Asia/Seoul
-
-    thymeleaf:
-      prefix: classpath:/templates/
-      suffix: .html
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/i9?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/i9?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: ssafy
-
-  jpa:
-    open-in-view: false
-    hibernate:
-      ddl-auto: create
-
-#      ddl-auto: update
-
-jwt:
-  secretKey: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHVhb3JpYWkta3ByaW5nYm9vdC1qd3QtdHV0b3JpYWk=
-
-  # mongoDB
-#  data:
-#    mongodb:
-#    #uri: mongodb+srv://S09P13B304:ssafy@ssafy.ngivl.mongodb.net/S09P13B304?authSource=admin
+    initialization-mode: never # resource 에 있는 schema.sql 을 실행 (기본값: always, 생성안함: never)
+  jpa: # DB 쿼리 작성 없이 코드로 쉽게 데이터 처리를 위함.
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  main:
+    allow-bean-definition-overriding: true # userDetailService 기존 스프링 제공 함수 안쓰고 정의 함수로 바꾸기 위한 설정
+server:
+  port: 8085 # 사용 포트
+  tomcat:
+    accesslog:
+      enabled: true # access 로그 추가
+    basedir: .

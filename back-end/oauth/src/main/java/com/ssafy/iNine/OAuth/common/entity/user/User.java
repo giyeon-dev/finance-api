@@ -1,4 +1,4 @@
-package com.ssafy.iNine.FinancialAPI.common.entity.user;
+package com.ssafy.iNine.OAuth.common.entity.user;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,11 +8,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Arrays;
 import java.util.Collection;
 
+/*
+* OAuth 인증을하려는 이용자
+* */
 @Data
 @Entity
+@Table(name="user")
 public class User implements UserDetails {
     @Id
     @Column(nullable = true, unique = true, length = 20)

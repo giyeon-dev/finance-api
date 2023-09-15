@@ -1,13 +1,13 @@
-package com.ssafy.iNine.FinancialAPI;
+package com.ssafy.iNine.OAuth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FinancialApiApplication {
+public class OAuthApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FinancialApiApplication.class, args);
+		SpringApplication.run(OAuthApplication.class, args);
 	}
 
 }

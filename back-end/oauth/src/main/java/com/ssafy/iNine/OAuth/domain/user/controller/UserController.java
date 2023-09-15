@@ -1,4 +1,4 @@
-package com.ssafy.iNine.FinancialAPI.domain.controller;
+package com.ssafy.iNine.OAuth.domain.user.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
