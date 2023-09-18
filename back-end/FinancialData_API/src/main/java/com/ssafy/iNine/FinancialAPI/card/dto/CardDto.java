@@ -3,6 +3,8 @@ package com.ssafy.iNine.FinancialAPI.card.dto;
 import com.ssafy.iNine.FinancialAPI.entity.Card;
 import lombok.*;
 
+import java.util.List;
+
 
 public class CardDto {
 
@@ -13,8 +15,9 @@ public class CardDto {
     @AllArgsConstructor
     public static class CardRequestDto {
         private String orgCode;
-        private String nextPage; //cardId 보다 큰 경우 mysql
-        private int limit;
+        private String nextPage; //cardId 보다 큰 경우 mysql 다음 개체의 id 값
+        private Integer limit;
+        private Long userId;
 
         // builder를 사용하면 객체를 빌더 패턴을 통해 생성할 수 있기 때문에 기본 생성자나 매개변수를 받는 생성자를 별도로 정의할 필요 없음?
 
@@ -26,26 +29,48 @@ public class CardDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class CardResponseDto {
-        private String nextPage;
-        private int cardCnt;
-        private long cardList;
+    public static class CardDataDto {
+
         private String cardId;
         private String cardNum;
         private Boolean isConsent;
         private String cardName;
-        private int cardMember;
+        private Integer cardMember;
         private String cardType;
 
 
-        public static CardResponseDto of(Card card, String nextPage, int cardCnt, long cardList) {
-            return CardResponseDto.builder()
+        public static CardDataDto of(Card card) {
+            return CardDataDto.builder()
                     .cardId(card.getCardId())
                     .cardNum(card.getCardNum())
                     .isConsent(card.getIsConsent())
                     .cardName(card.getCardName())
                     .cardMember(card.getCardMember())
                     .cardType(card.getCardType())
+                    .build();
+
+
+        }
+
+
+
+
+    }
+
+    @Setter
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class CardResponseDto {
+        private String nextPage;
+        private Integer cardCnt;
+        private List<CardDataDto> cardList;
+
+
+
+        public static CardResponseDto of(String nextPage, Integer cardCnt, List<CardDataDto> cardList) {
+            return CardResponseDto.builder()
                     .nextPage(nextPage)
                     .cardCnt(cardCnt)
                     .cardList(cardList)
@@ -53,6 +78,8 @@ public class CardDto {
 
 
         }
+
+
 
 
     }
