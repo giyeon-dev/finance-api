@@ -3,6 +3,7 @@ package com.ssafy.iNine.OAuth.common.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -14,6 +15,8 @@ import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import javax.sql.DataSource;
 
@@ -28,28 +31,21 @@ public class Oauth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()") // 토큰유효성(/token/check_token) 접근을 위해 설정 모두 허용하지 않으면 해당 서버에서 토큰 접근이 불가능 하여 토큰을 DB에서 찾을 수 없다.
-                .checkTokenAccess("isAuthenticated()") // 인증된 사용자만 토큰 체크 가능
+                //.checkTokenAccess("isAuthenticated()") // 인증된 사용자만 토큰 체크 가능
                 .allowFormAuthenticationForClients();
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.jdbc(dataSource);
-//        clients.inMemory()
-//                .withClient("clientId")
-//                .secret("secretKey")
-//                .authorizedGrantTypes("authorization_code","password", "refresh_token", "client_credentials")
-//                .scopes("read", "write")
-//                .accessTokenValiditySeconds(3600)
-//                .refreshTokenValiditySeconds(86400)
-//                .redirectUris("http://localhost:8085/callback")
-//                .autoApprove(true);
     }
 //  http://localhost:8085/oauth/authorize?response_type=code&client_id=clientId&secret_key=secretKey&redirect_uri=http://localhost:8085/callback&scope=read
-    @Bean
-    public TokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource);
-    }
+
+    //token db 저장
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new JdbcTokenStore(dataSource);
+//    }
 
     // 권한 동의 DB 저장
     @Bean
@@ -61,8 +57,23 @@ public class Oauth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
-                .tokenStore(tokenStore())
-                .userDetailsService(userDetailsService);
+//                .tokenStore(tokenStore())
+                .userDetailsService(userDetailsService)
+                .accessTokenConverter(jwtAccessTokenConverter());
 //                .approvalStore(approvalStore()); // 권한 동의 설정
+    }
+
+    @Bean
+    public JwtAccessTokenConverter jwtAccessTokenConverter(){
+        // RSA 암호화 : 비 대칭키 암호화 : 공개키로 암호화 하면 개인키로 복호화
+        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwtkey.jks"), "i9ssafyi91234!!!".toCharArray());
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("jwtkey"));
+
+        // 대칭키 암호화 : key 값은 리소스 서버에도 넣고 하면 됨.
+         /*JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setSigningKey("key");*/
+
+        return converter;
     }
 }
