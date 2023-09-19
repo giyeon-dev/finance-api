@@ -20,10 +20,21 @@ public class CardController {
     private final CardService cardService;
 
     @GetMapping("/cards")
-    public DataResponse<CardDto.CardResponseDto> cardList(@RequestBody CardDto.CardRequestDto cardRequestDto ) {
+    public DataResponse<CardDto.CardResponseDto> cardList(
+            @RequestParam("orgCode") String orgCode,
+            @RequestParam("nextPage") Integer nextPage,
+            @RequestParam("limit") Integer limit,
+            @RequestParam("userId") String userId
+    ) {
+        CardDto.CardRequestDto cardRequestDto = CardDto.CardRequestDto.builder()
+                .orgCode(orgCode)
+                .nextPage(nextPage)
+                .limit(limit)
+                .userId(userId)
+                .build();
+
         CardDto.CardResponseDto result = cardService.getUserCardList(cardRequestDto);
         return new DataResponse<>(200, "카드 목록 조회 성공", result);
-
     }
 
 }

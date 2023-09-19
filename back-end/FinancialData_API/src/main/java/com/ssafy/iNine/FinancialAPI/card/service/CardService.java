@@ -21,44 +21,96 @@ public class CardService {
     private final CardRepository cardRepository;
 
 
-    // userId로 카드 정보 저장된게 있는지 찾고 없으면 카드 더미 데이터를 생성하고 있으면 기존 카드 정보를 반환해줌....
+    // userId로 카드 정보 저장된게 있는지 찾고 없으면 카드 더미 데이터를 생성하고 있으면 기존 카드 정보를 반환
     public CardDto.CardResponseDto getUserCardList(CardDto.CardRequestDto cardRequestDto) {
+
+        // userId로 카드 정보 조회 반환용dto
         List<Card> cardList = cardRepository.findByUserId(cardRequestDto.getUserId());
-        CardDto.CardResponseDto cardResponse = new  CardDto.CardResponseDto();
+
+        // 카드 정보가 없으면 더미 데이터 생성
+        if (cardList == null || cardList.isEmpty()) {
+            cardList = generateUserCards(cardRequestDto.getUserId());
+            cardRepository.saveAll(cardList); // 생성된 더미 데이터를 저장
+        }
 
         //페이지네이션
-        String nextPage = cardRequestDto.getNextPage();
+        Integer nextPage = cardRequestDto.getNextPage();
         Integer limit = cardRequestDto.getLimit();
 
 
-        if (cardList == null) {
-            List<CardDto.CardDataDto> newCard = generateUserCards();
+        //페이지네이션 처리
+        List<CardDto.CardDataDto> paginatedCardList = paginateCardList(cardList, nextPage, limit);
 
-
-            cardResponse.of(nextPage, newCard.size(), newCard);
-            // nextPage는 다음 페이지 요청을 위한 기준 개체, 처음 API 호출 시에는 해당 정보를 세팅하지 않으며 다음 페이지 요청 시 직전 조회의 응답에서 얻은 기준개체 세팅
-            // limit(최대 조회 개수, 기준개체 이후 반환될 개체의 개수) 개수를 안넘으면 nextPage는 null이고 넘으면 limit + 1 값을 nextPage로...
-
-
-        } else {
-            // cardList가 null이 아닌 경우 cardList의 값들을 cardResponse에 담기
-            /* limit를 기준으로 cardList의 카드 개수가 limit를 넘는 경우에는 limit만큼 잘라서 반환, 마지막 개체를 nextPage로 설정
-            limit 개수를 안넘는 경우에는 모든 cardList의 값들을 cardResponse에 담기*/
-            if (cardList.size() <= limit) {
-                cardResponse.of(nextPage, cardList.size(), );
-
-            }
-        }
+        // 응답 객체 생성
+        CardDto.CardResponseDto cardResponse = new CardDto.CardResponseDto();
+        cardResponse.setNextPage(nextPage);
+        cardResponse.setCardCnt(paginatedCardList.size());
+        cardResponse.setCardList(paginatedCardList);
 
         return cardResponse;
     }
-    public List<CardDto.CardDataDto> generateUserCards() {
+
+
+    private List<CardDto.CardDataDto> paginateCardList(List<Card> cardList, Integer nextPage, int limit) {
+        int startIndex;
+
+        if (nextPage != null) {
+            // 이전 페이지에서 마지막으로 조회한 개체의 인덱스를 찾음
+            startIndex = findLastIndex(cardList, nextPage) + 1;
+        } else {
+            startIndex = 0;
+        }
+
+        int endIndex = Math.min(startIndex + limit, cardList.size());
+
+        // 페이지네이션된 카드 데이터 추출
+        List<Card> paginatedCards = cardList.subList(startIndex, endIndex);
+
+        // 카드 데이터를 CardDataDto 형태로 변환하여 반환(왜?)
+        List<CardDto.CardDataDto> paginatedCardData = new ArrayList<>();
+        for (Card card : paginatedCards) {
+            CardDto.CardDataDto cardData = convertToCardDataDto(card);
+            paginatedCardData.add(cardData);
+        }
+
+        return paginatedCardData;
+    }
+    private CardDto.CardDataDto convertToCardDataDto(Card card) {
+        return CardDto.CardDataDto.builder()
+                .cardId(card.getCardId())
+                .cardNum(card.getCardNum())
+                .isConsent(card.getIsConsent())
+                .cardName(card.getCardName())
+                .cardMember(card.getCardMember())
+                .cardType(card.getCardType())
+                .build();
+    }
+
+    private int findLastIndex(List<Card> cardList, Integer nextPage) {
+        for (int i = 0; i < cardList.size(); i++) {
+            if (cardList.get(i).getCardId().equals(nextPage)) {
+                return i;
+            }
+        }
+        return -1; // nextPage가 존재하지 않는 경우
+    }
+
+    public List<Card> generateUserCards(String userId) {
         int cardCnt = ThreadLocalRandom.current().nextInt(1, 11);
 
-        List<CardDto.CardDataDto> cards = new ArrayList<>();
+        List<Card> cards = new ArrayList<>();
 
         for (int i = 0; i < cardCnt; i++) {
-            CardDto.CardDataDto card = generateRandomCard();
+            CardDto.CardDataDto cardData = generateRandomCard();
+            Card card = new Card();
+            card.setUserId(userId);
+            card.setCardId(cardData.getCardId());
+            card.setCardNum(cardData.getCardNum());
+            card.setIsConsent(cardData.getIsConsent());
+            card.setCardName(cardData.getCardName());
+            card.setCardMember(cardData.getCardMember());
+            card.setCardType(cardData.getCardType());
+
             cards.add(card);
         }
         return cards;
@@ -66,7 +118,7 @@ public class CardService {
 
     private CardDto.CardDataDto generateRandomCard() {
         //  랜덤한 카드 정보 생성
-        UUID cardId = UUID.randomUUID();
+//        UUID cardId = UUID.randomUUID();
         String cardNum = generateRandomCardNum();
         String cardName = generateRandomCardName();
         Integer cardMember = generateRandomCardMember();
@@ -74,7 +126,6 @@ public class CardService {
         Boolean isConsent = true;
 
         return CardDto.CardDataDto.builder()
-                .cardId(cardId.toString())
                 .cardNum(cardNum)
                 .cardName(cardName)
                 .cardMember(cardMember)
