@@ -15,9 +15,9 @@ public class CardDto {
     @AllArgsConstructor
     public static class CardRequestDto {
         private String orgCode;
-        private String nextPage; //cardId 보다 큰 경우 mysql 다음 개체의 id 값
+        private Integer nextPage; //cardId 보다 큰 경우 mysql 다음 개체의 id 값
         private Integer limit;
-        private Long userId;
+        private String userId;
 
         // builder를 사용하면 객체를 빌더 패턴을 통해 생성할 수 있기 때문에 기본 생성자나 매개변수를 받는 생성자를 별도로 정의할 필요 없음?
 
@@ -29,9 +29,10 @@ public class CardDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
+    @ToString(of = {"cardId", "cardNum", "isConsent", "cardName", "cardMember", "cardType"})
     public static class CardDataDto {
 
-        private String cardId;
+        private Long cardId;
         private String cardNum;
         private Boolean isConsent;
         private String cardName;
@@ -63,24 +64,9 @@ public class CardDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class CardResponseDto {
-        private String nextPage;
+        private Integer nextPage;
         private Integer cardCnt;
         private List<CardDataDto> cardList;
-
-
-
-        public static CardResponseDto of(String nextPage, Integer cardCnt, List<CardDataDto> cardList) {
-            return CardResponseDto.builder()
-                    .nextPage(nextPage)
-                    .cardCnt(cardCnt)
-                    .cardList(cardList)
-                    .build();
-
-
-        }
-
-
-
 
     }
 }
