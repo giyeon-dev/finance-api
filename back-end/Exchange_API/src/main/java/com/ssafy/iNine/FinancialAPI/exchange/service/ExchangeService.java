@@ -19,6 +19,7 @@ import org.json.simple.parser.ParseException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -41,9 +42,9 @@ import java.util.*;
 public class ExchangeService {
     private final ExchangeRepository exchangeRepository;
     private final CountryRepository countryRepository;
+    private final RedisTemplate<String, Object> redisTemplate;
     private static HttpURLConnection connection;
     private static BigDecimal defaultExchangeRate = BigDecimal.valueOf(1300);
-    
 
     public List<List<ExchangeDto.All>> getMyBank() throws IOException {
         List<List<ExchangeDto.All>> exchangeList = new ArrayList<>();
@@ -77,12 +78,14 @@ public class ExchangeService {
         return exchangeList;
     }
 
-    @Async
 //    @Scheduled(fixedDelay = 5000)
-    @Scheduled(fixedDelay = 300000)
+    @Async
+    @Scheduled(fixedDelay = 120000) // 2분
     @Transactional
     public void updateExchange() throws IOException {
+        if(exchangeRepository.findAll().size() == 0) insertExchange();
         System.out.println("환율 업데이트");
+        long startTime = System.currentTimeMillis();
         List<Bank> banks = Arrays.asList(Bank.values());
 
         for(int b=0; b<banks.size(); b++) {
@@ -117,7 +120,10 @@ public class ExchangeService {
                 exchange.setPrice(new BigDecimal(country.get(8).text()));
             }
         }
+        long endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime));
     }
+
 
     public void insertExchange() throws IOException {
         List<Bank> banks = Arrays.asList(Bank.values());
@@ -239,10 +245,16 @@ public class ExchangeService {
         }
         map.put("bank", banks);
 
+        System.out.println("환율 가져오기");
+        long startTime = System.currentTimeMillis();
         List<Exchange> exchangeList = exchangeRepository.findAll();
+        long endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime));
         map.put("list", exchangeList);
         return map;
     }
+
+
 
     public List<CountryDto> getCountryList() {
         List<Country> countryList = countryRepository.findAll();
