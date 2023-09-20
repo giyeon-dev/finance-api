@@ -15,9 +15,8 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
-#      ddl-auto: update
 
 jwt:
   secretKey: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHVhb3JpYWkta3ByaW5nYm9vdC1qd3QtdHV0b3JpYWk=

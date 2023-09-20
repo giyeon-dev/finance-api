@@ -12,6 +12,20 @@ spring:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ***REMOVED***
+    password: ppxz mzou cxfd mifm
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  data:
+    mongodb:
+      uri: mongodb+srv://S09P13B304:ssafy@ssafy.ngivl.mongodb.net/S09P13B304?authSource=admin
 #  main:
 #    allow-bean-definition-overriding: true # userDetailService 기존 스프링 제공 함수 안쓰고 정의 함수로 바꾸기 위한 설정
 server:
@@ -20,3 +34,6 @@ server:
     accesslog:
       enabled: true # access 로그 추가
     basedir: .
+
+
+

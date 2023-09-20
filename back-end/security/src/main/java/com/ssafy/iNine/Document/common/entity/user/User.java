@@ -1,9 +1,6 @@
-package com.ssafy.iNine.OAuth.common.entity.user;
+package com.ssafy.iNine.Document.common.entity.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,9 +17,6 @@ import java.util.Collection;
 * */
 @Data
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name="user")
 public class User implements UserDetails {
     @Id
