@@ -9,4 +9,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AnalyzeDataService {
 
+    public void generateStore(){
+
+
+    }
 }
