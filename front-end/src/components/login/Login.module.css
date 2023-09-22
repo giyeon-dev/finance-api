@@ -1,4 +1,8 @@
-.signupBody {
+a {
+    text-decoration: none;
+    color: #000;
+}
+.loginBody {
     min-height: 100vh;
     display: flex;
     /*
@@ -8,7 +12,7 @@
     background-image: url('../../assets/img/background.png');
     background-size: cover;
 }
-.signupContainer {
+.loginContainer {
     margin: 150px auto;
     width: 336px;
     display: flex;
@@ -21,36 +25,22 @@
     font-size: 2rem;
     margin-bottom: 10px;
 }
-.signupTitle {
-    font-size: 1rem;
-    font-weight: 900;
-}
-.signupBox {
-    display: flex;
-    flex-direction: column;
+.loginInput {
     width: 100%;
-    font-weight: 900;
-    color: #777777;
-}
-.signupText {
-    margin: 20px 0 10px 0;
-}
-.signupInput {
-    width: 100%;
-    padding: 20px;
+    padding: 20px 15px;
+    margin-top: 20px;
     font-size: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.26);
     border-radius: 4px;
     /* input 박스가 프레임밖으로 벗어나는걸 막음 */
     box-sizing: border-box;
-    /* overflow: hidden; */
 }
-.signupInput:focus {
+.loginInput:focus {
     outline: none;
 }
-.signupBtn {
+.loginBtn {
     width: 100%;
-    margin: 30px 0 40px 0;
+    margin: 20px 0 40px 0;
     padding: 20px 15px;
     background-color: rgb(250, 250, 250);
     color: rgba(0, 0, 0, 0.16);
@@ -60,7 +50,23 @@
     border-radius: 6px;
     cursor: pointer;
 }
-.signupBtn:hover {
+.loginBtn:hover {
     background-color: #182018;
     color: #fff;
+}
+.otherContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.rightBorder {
+    border-right: 1px solid #b9b9b9;
+}
+.otherBtn {
+    flex: 1;
+    color: #777777;
+    font-weight: 600;
+}
+.alignRight {
+    text-align: right;
 }
