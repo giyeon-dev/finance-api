@@ -1,3 +1,4 @@
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
@@ -6,13 +7,21 @@ import App from './App';
 import NavBar from './components/common/NavBar';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'; // redux-persist의 PersistGate를 추가합니다.
+import store, { persistor } from './redux/store'; // 스토어와 persistor를 import 합니다.
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <BrowserRouter>
-    <NavBar />
-      <App />
-  </BrowserRouter>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <NavBar />
+        <App />
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
   // </React.StrictMode>
 );
 
