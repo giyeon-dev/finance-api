@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Login.module.css';
+import { Link } from 'react-router-dom';
+
 const Login = () => {
     return (
         <div className={styles.loginBody}>
@@ -12,9 +14,9 @@ const Login = () => {
                     <a className={`${styles.rightBorder} ${styles.otherBtn}`} href="#">
                         <span>비밀번호 재설정</span>
                     </a>
-                    <a className={`${styles.alignRight} ${styles.otherBtn}`} href="#">
+                    <Link className={`${styles.alignRight} ${styles.otherBtn}`} to="/signup">
                         <span>회원가입</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

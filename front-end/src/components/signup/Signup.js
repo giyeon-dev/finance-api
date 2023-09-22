@@ -6,8 +6,8 @@ import basicHttp from '../../api/basicHttp';
 import styles from './Signup.module.css';
 
 const Signup = () => {
-    const [ssafyClass, setSsafyClass] = useState('');
     const [ssafyArea, setSsafyArea] = useState('');
+    const [ssafyClass, setSsafyClass] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -26,6 +26,51 @@ const Signup = () => {
     const handlePasswordConfirm = (e) => {
         setPasswordConfirm(e.target.value);
     };
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    // 회원가입 버튼 클릭
+    async function onClickRegister() {
+        if (!ssafyArea) {
+            alert('싸피지역을 입력해주세요');
+            return;
+        }
+        if (!ssafyClass) {
+            alert('싸피반을 입력해주세요');
+            return;
+        }
+        if (!email) {
+            alert('이메일을 입력해주세요');
+            return;
+        }
+        if (!password) {
+            alert('비밀번호를 입력해주세요');
+            return;
+        }
+        if (password !== passwordConfirm) {
+            alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+            return;
+        }
+
+        const userData = {
+            area: ssafyArea,
+            class: ssafyClass,
+            email: email,
+            password: password,
+        };
+
+        try {
+            const res = await basicHttp.post(`/user`, userData);
+            console.log(res);
+            console.log('회원가입 성공');
+            navigate('/');
+            alert('회원가입 성공');
+        } catch (error) {
+            console.error('회원가입 실패:', error);
+            alert('회원가입 실패');
+        }
+    }
 
     return (
         <div className={styles.signupBody}>
@@ -97,7 +142,9 @@ const Signup = () => {
                         placeholder="비밀번호를 입력해주세요"
                     />
                 </div>
-                <button className={styles.signupBtn}>가입하기</button>
+                <button className={styles.signupBtn} onClick={onClickRegister}>
+                    가입하기
+                </button>
             </div>
         </div>
     );
