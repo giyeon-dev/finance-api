@@ -1,0 +1,45 @@
+/* Sidebar.css */
+
+.selected {
+    background-color:#F5D042;
+    padding: 10px 15px;
+    border-radius: 15px;
+  }
+  .noSelected {
+    padding: 10px 15px;
+    border-radius: 20px;
+  }
+  .sidebar {
+    width: 200px;
+    margin: 0 ;
+
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin: 10px;
+    padding-bottom: 20PX;
+    
+  }
+  
+  
+  .sidebar a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  
+  .noSelected:hover {
+    background-color:#F5D042;
+  }
+  
