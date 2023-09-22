@@ -10,8 +10,8 @@ import Login from './components/login/Login';
 // 마이페이지
 import Mypage from './components/mypage/Mypage'
 // 서비스 소개
-import ServiceInfo from './components/service/ServiceInfo';
-import APIDocs from './components/service/APIDocs';
+import ServiceInfo from './components/serviceinfo/ServiceInfo';
+import APIDocs from './components/apidocs/APIDocs';
 // API문서
 
 function App() {
