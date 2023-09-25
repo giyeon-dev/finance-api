@@ -54,10 +54,10 @@ const Signup = () => {
         }
 
         const userData = {
-            area: ssafyArea,
-            class: ssafyClass,
             email: email,
             password: password,
+            class: ssafyClass,
+            area: ssafyArea,
         };
 
         try {

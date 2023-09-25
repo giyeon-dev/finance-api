@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const handleEmail = (e) => {
+        
+    }
+    
+
     return (
         <div className={styles.loginBody}>
             <div className={styles.loginContainer}>
