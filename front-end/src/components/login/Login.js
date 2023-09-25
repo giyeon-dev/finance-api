@@ -6,16 +6,19 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleEmail = (e) => {
-        
-    }
+        setEmail(e.target.value);
+    };
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    };
     
 
     return (
         <div className={styles.loginBody}>
             <div className={styles.loginContainer}>
                 <div className={styles.logoText}>S.F.O.API</div>
-                <input className={styles.loginInput} type="text" placeholder="아이디" />
-                <input className={styles.loginInput} type="password" placeholder="비밀번호" />
+                <input className={styles.loginInput} value={email}  type="text" placeholder="아이디" />
+                <input className={styles.loginInput} value={password} type="password" placeholder="비밀번호" />
                 <button className={styles.loginBtn}>로그인</button>
                 <div className={styles.otherContainer}>
                     <a className={`${styles.rightBorder} ${styles.otherBtn}`} href="#">
