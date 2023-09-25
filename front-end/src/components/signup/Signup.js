@@ -61,7 +61,7 @@ const Signup = () => {
         };
 
         try {
-            const res = await basicHttp.post(`/user`, userData);
+            const res = await basicHttp.post(`/docs/service`, userData);
             console.log(res);
             console.log('회원가입 성공');
             navigate('/');
