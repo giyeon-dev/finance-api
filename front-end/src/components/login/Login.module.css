@@ -19,6 +19,13 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: rgba(240, 240, 240, 0.3);
+    width: 30%;
+    min-width: 400px;
+    /* height: 100%; */
+    padding: 10px 20px 20px;
+    border-radius: 50px;
 }
 .logoText {
     font-family: 'GmarketSansMedium';
@@ -61,12 +68,13 @@ a {
 }
 .rightBorder {
     border-right: 1px solid #b9b9b9;
+    text-align: center;
 }
 .otherBtn {
     flex: 1;
-    color: #777777;
+    color: #000000;
     font-weight: 600;
 }
 .alignRight {
-    text-align: right;
+    text-align: center;
 }
