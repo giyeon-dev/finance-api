@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import basicHttp from '../../api/basicHttp';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -11,15 +12,57 @@ const Login = () => {
     const handlePassword = (e) => {
         setPassword(e.target.value);
     };
-    
+
+    const navigate = useNavigate();
+
+    async function onClickLogin() {
+        if (!email) {
+            alert('이메일을 입력해주세요');
+            return;
+        }
+        if (!password) {
+            alert('비밀번호를 입력해주세요');
+            return;
+        }
+
+        const userData = {
+            email: email,
+            password: password,
+        };
+
+        try {
+            const res = await basicHttp.post(`/docs/service`, userData);
+            console.log(res);
+            console.log('회원가입 성공');
+            navigate('/');
+            alert('회원가입 성공');
+        } catch (error) {
+            console.error('회원가입 실패:', error);
+            alert('회원가입 실패');
+        }
+    }
 
     return (
         <div className={styles.loginBody}>
             <div className={styles.loginContainer}>
                 <div className={styles.logoText}>S.F.O.API</div>
-                <input className={styles.loginInput} value={email}  type="text" placeholder="아이디" />
-                <input className={styles.loginInput} value={password} type="password" placeholder="비밀번호" />
-                <button className={styles.loginBtn}>로그인</button>
+                <input
+                    className={styles.loginInput}
+                    value={email}
+                    onChange={handleEmail}
+                    type="text"
+                    placeholder="아이디"
+                />
+                <input
+                    className={styles.loginInput}
+                    value={password}
+                    onChange={handlePassword}
+                    type="password"
+                    placeholder="비밀번호"
+                />
+                <button className={styles.loginBtn} onClick={onClickLogin}>
+                    로그인
+                </button>
                 <div className={styles.otherContainer}>
                     <a className={`${styles.rightBorder} ${styles.otherBtn}`} href="#">
                         <span>비밀번호 재설정</span>
