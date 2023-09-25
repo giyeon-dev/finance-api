@@ -56,7 +56,7 @@ const Signup = () => {
         const userData = {
             email: email,
             password: password,
-            class: ssafyClass,
+            ssafy_class: ssafyClass,
             area: ssafyArea,
         };
 
