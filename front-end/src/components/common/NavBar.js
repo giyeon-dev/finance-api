@@ -1,8 +1,7 @@
 import React from "react";
-
 import styles from "./NavBar.module.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/userInfo";
 
@@ -11,10 +10,14 @@ const NavBar = () => {
 	const userInfo = useSelector((state) => {
 		return state;
 	});
+
+	const navigate = useNavigate();
+
 	const onClickLogout = () => {
 		localStorage.removeItem("access-token");
 		localStorage.removeItem("refresh-token");
 		dispatch(logout());
+		navigate("/");
 	};
 	return (
 		<div className={styles.mainNav}>
@@ -30,7 +33,7 @@ const NavBar = () => {
 				</Link>
 			</div>
 			{/* 로그인 상태에 따라 Login 또는 Mypage로 링크 변경 */}
-			{userInfo ? (
+			{userInfo === null ? (
 				<div className={styles.navRight}>
 					<Link className={styles.navMenu} to="/mypage">
 						마이페이지
