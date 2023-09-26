@@ -42,10 +42,10 @@ const Login = () => {
             localStorage.setItem('refresh-token', res.data.data['refresh-token']);
 
             // 유저 데이터 redux에 저장
-            tokenHttp.post(`/docs/service/token`).then((response) => {
-                console.log(response);
-                dispatch(getCurrentUserdata(response.data.data));
-            });
+            // tokenHttp.post(`/docs/service/token`).then((response) => {
+            //     console.log(response);
+            //     dispatch(getCurrentUserdata(response.data.data));
+            // });
             navigate('/');
             alert('로그인 성공');
         } catch (error) {
