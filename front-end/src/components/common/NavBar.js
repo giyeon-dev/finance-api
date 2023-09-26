@@ -14,7 +14,7 @@ const NavBar = () => {
 	const onClickLogout = () => {
 		localStorage.removeItem("access-token");
 		localStorage.removeItem("refresh-token");
-		dispatch(logout);
+		dispatch(logout());
 	};
 	return (
 		<div className={styles.mainNav}>
