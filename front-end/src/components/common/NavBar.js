@@ -23,7 +23,7 @@ const NavBar = () => {
                 </Link>
             </div>
             {/* 로그인 상태에 따라 Login 또는 Mypage로 링크 변경 */}
-            {localStorage.getItem('access-token') === true ? (
+            {localStorage.getItem('access-token') ? (
                 <div className={styles.navRight}>
                     <Link className={styles.navMenu} to="/mypage">
                         마이페이지
