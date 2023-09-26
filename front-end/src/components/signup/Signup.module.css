@@ -39,12 +39,34 @@
     font-weight: 900;
     color: #000000;
 }
+.signupBox2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: 900;
+}
+.areaBox {
+    flex: 1; /* areaBox가 동일한 너비를 가지도록 설정합니다. */
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px; /* areaBox와 classBox 간의 간격을 조절합니다. */
+}
+.classBox {
+    flex: 1; /* classBox가 동일한 너비를 가지도록 설정합니다. */
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px; /* areaBox와 classBox 간의 간격을 조절합니다. */
+}
+.signupText2 {
+    margin: 20px 0 10px 0;
+}
 .signupText {
     margin: 20px 0 10px 0;
 }
 .signupInput {
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     font-size: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.26);
     border-radius: 4px;

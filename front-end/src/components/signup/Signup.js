@@ -77,32 +77,35 @@ const Signup = () => {
             <div className={styles.signupContainer}>
                 <div className={styles.logoText}>S.F.O.API</div>
                 <div className={styles.signupTitle}>회원가입</div>
-                <div className={styles.signupBox}>
-                    <label htmlFor="nickname" className={styles.signupText}>
-                        싸피 지역
-                    </label>
-                    <input
-                        type="text"
-                        name="ssafyArea"
-                        value={ssafyArea}
-                        onChange={handleSsafyArea}
-                        className={styles.signupInput}
-                        placeholder="싸피지역을 입력해주세요"
-                    />
+                <div className={styles.signupBox2}>
+                    <div className={styles.areaBox}>
+                        <label htmlFor="nickname" className={styles.signupText2}>
+                            싸피 지역
+                        </label>
+                        <input
+                            type="text"
+                            name="ssafyArea"
+                            value={ssafyArea}
+                            onChange={handleSsafyArea}
+                            className={styles.signupInput2}
+                            placeholder="싸피지역을 입력해주세요"
+                        />
+                    </div>
+                    <div className={styles.classBox}>
+                        <label htmlFor="ssafyClass" className={styles.signupText2}>
+                            싸피 반
+                        </label>
+                        <input
+                            type="text"
+                            name="ssafyClass"
+                            value={ssafyClass}
+                            onChange={handleSsafyClass}
+                            className={styles.signupInput2}
+                            placeholder="싸피반을 입력해주세요"
+                        />
+                    </div>
                 </div>
-                <div className={styles.signupBox}>
-                    <label htmlFor="ssafyClass" className={styles.signupText}>
-                        싸피 반
-                    </label>
-                    <input
-                        type="text"
-                        name="ssafyClass"
-                        value={ssafyClass}
-                        onChange={handleSsafyClass}
-                        className={styles.signupInput}
-                        placeholder="싸피반을 입력해주세요"
-                    />
-                </div>
+
                 <div className={styles.signupBox}>
                     <label htmlFor="email" className={styles.signupText}>
                         아이디(이메일)
