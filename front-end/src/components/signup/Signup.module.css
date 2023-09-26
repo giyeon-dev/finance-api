@@ -9,7 +9,7 @@
     background-size: cover;
 }
 .signupContainer {
-    margin: 150px auto;
+    margin: 100px auto;
     /* width: 336px; */
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
 
     background-color: rgba(240, 240, 240, 0.3);
     width: 10%;
-    min-width: 500px;
+    min-width: 30%;
     height: 100%;
     padding: 10px 20px 20px;
     border-radius: 50px;
@@ -32,19 +32,19 @@
     font-size: 1rem;
     font-weight: 900;
 }
-.signupBox {
+.signupBox,
+.signupBox2 {
     display: flex;
-    flex-direction: column;
     width: 100%;
     font-weight: 900;
     color: #000000;
 }
+.signupBox {
+    flex-direction: column;
+}
 .signupBox2 {
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
-    font-weight: 900;
 }
 .areaBox {
     flex: 1; /* areaBox가 동일한 너비를 가지도록 설정합니다. */
@@ -58,13 +58,13 @@
     flex-direction: column;
     margin-left: 10px; /* areaBox와 classBox 간의 간격을 조절합니다. */
 }
+.signupText,
 .signupText2 {
-    margin: 20px 0 10px 0;
+    margin: 7px 0 7px 0;
 }
-.signupText {
-    margin: 20px 0 10px 0;
-}
-.signupInput {
+
+.signupInput,
+.signupInput2 {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -74,7 +74,7 @@
     box-sizing: border-box;
     /* overflow: hidden; */
 }
-.signupInput:focus {
+.signupInput:focus .signupInput2:focus {
     outline: none;
 }
 .signupBtn {
