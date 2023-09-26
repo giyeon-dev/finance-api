@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getCurrentUserdata } from '../../redux/userdata';
 import basicHttp from '../../api/basicHttp';
+import tokenHttp from '../../api/basicHttp';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -36,6 +40,12 @@ const Login = () => {
             console.log('로그인 성공');
             localStorage.setItem('access-token', res.data.data['access-token']);
             localStorage.setItem('refresh-token', res.data.data['refresh-token']);
+
+            // 유저 데이터 redux에 저장
+            tokenHttp.post(`/docs/service/token`).then((response) => {
+                console.log(response);
+                useDispatch(getCurrentUserdata(response.data.data));
+            });
             navigate('/');
             alert('로그인 성공');
         } catch (error) {
