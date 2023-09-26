@@ -19,7 +19,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const userInfo = useSelector((state) => {
-		return state;
+		return state.persistedReducer.userInfo;
 	});
 
 	async function onClickLogin() {

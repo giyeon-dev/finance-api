@@ -18,12 +18,12 @@ const tokenHttp = axios.create({
 
 // 요청 인터셉터 설정 (요청 보내기 전에 수행되는 함수)
 tokenHttp.interceptors.request.use(async (req) => {
-	const navigate = useNavigate();
 	const accessToken = localStorage.getItem("access-token");
+	const navigate = useNavigate();
 	if (!accessToken) {
 		console.log("token 이 존재하지 않습니다.");
 		throw new Error("expire token");
-		navigate("/login");
+		navigate("/login"); // 여기 이건 왜 못쓰는거야 ??
 	}
 
 	const user = jwt_decode(accessToken);

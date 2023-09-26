@@ -8,7 +8,7 @@ import { logout } from "../../redux/userInfo";
 const NavBar = () => {
 	const dispatch = useDispatch();
 	const userInfo = useSelector((state) => {
-		return state;
+		return state.persistedReducer.userInfo;
 	});
 
 	const navigate = useNavigate();
@@ -33,7 +33,7 @@ const NavBar = () => {
 				</Link>
 			</div>
 			{/* 로그인 상태에 따라 Login 또는 Mypage로 링크 변경 */}
-			{userInfo === null ? (
+			{userInfo !== null ? (
 				<div className={styles.navRight}>
 					<Link className={styles.navMenu} to="/mypage">
 						마이페이지
