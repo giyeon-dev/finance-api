@@ -33,8 +33,10 @@ tokenHttp.interceptors.request.use(async (req) => {
         return req;
     }
 
-    // 만료되었다면 refresh-token으로 token 재발급
+    // 만료되었다면 강제 로그아웃
     console.log('api/tokenHttp.js : access token 만료');
+    localStorage.removeItem('access-token');
+    localStorage.removeItem('refresh-token');
 
     // 여기에서 로그인 페이지로 리디렉션을 수행할 수 있습니다.
     // 예를 들어, React Router의 navigate 또는 history.push 등을 사용하여 로그인 페이지로 이동할 수 있습니다.
