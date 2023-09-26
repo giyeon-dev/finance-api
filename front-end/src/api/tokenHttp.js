@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/userInfo";
 
-const dispatch = useDispatch();
-
 // 토큰이 필요한 인증에 사용
 
 const baseURL = process.env.REACT_APP_SERVER_URL;
@@ -39,6 +37,7 @@ tokenHttp.interceptors.request.use(async (req) => {
 
 	// 만료되었다면 강제 로그아웃
 	console.log("api/tokenHttp.js : access token 만료");
+	const dispatch = useDispatch();
 	dispatch(logout());
 	localStorage.removeItem("access-token");
 	localStorage.removeItem("refresh-token");
