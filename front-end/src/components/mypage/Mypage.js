@@ -13,6 +13,9 @@ const Mypage = () => {
         const getApiToken = async () => {
             const res = await tokenHttp.get(`/docs/service/token`);
             console.log(res);
+            console.log('api토큰 발급 성공');
+
+            localStorage.setItem('api-token', res.data.data);
         };
 
         getApiToken();
@@ -29,11 +32,11 @@ const Mypage = () => {
 
     async function onClickapiTokenRefreshBtn() {
         try {
-            const res = await tokenHttp.post(`/docs/service/token`);
+            const res = await tokenHttp.get(`/docs/service/token`);
             console.log(res);
             console.log('api토큰 재발급 성공');
 
-            localStorage.setItem('refresh-token', res.data.data['refresh-token']);
+            localStorage.setItem('api-token', res.data.data);
             alert('api토큰 재발급 성공');
         } catch (error) {
             console.error('api토큰 재발급  실패:', error);
