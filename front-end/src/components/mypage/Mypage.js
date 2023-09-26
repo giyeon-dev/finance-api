@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Mypage.module.css';
 
-import basicHttp from '../api/basicHttp';
-import tokenHttp from '../api/tokenHttp';
+import basicHttp from '../../api/basicHttp';
+import tokenHttp from '../../api/tokenHttp';
 
 const Mypage = () => {
     // useState, useEffect
