@@ -31,14 +31,14 @@ const Login = () => {
         };
 
         try {
-            const res = await basicHttp.post(`/docs/service`, userData);
+            const res = await basicHttp.post(`/service/login`, userData);
             console.log(res);
-            console.log('회원가입 성공');
+            console.log('로그인 성공');
             navigate('/');
-            alert('회원가입 성공');
+            alert('로그인 성공');
         } catch (error) {
-            console.error('회원가입 실패:', error);
-            alert('회원가입 실패');
+            console.error('로그인 실패:', error);
+            alert('로그인 실패');
         }
     }
 
