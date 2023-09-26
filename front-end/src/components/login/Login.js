@@ -43,14 +43,14 @@ const Login = () => {
 			console.log("로그인 성공");
 			localStorage.setItem("access-token", res.data.data["access-token"]);
 			localStorage.setItem("refresh-token", res.data.data["refresh-token"]);
+			dispatch(setUserInfo({ accessToken: response.data.data["access-token"] }));
 
 			// // 유저 데이터 redux에 저장
-			// tokenHttp.get(`/docs/service/token`).then((response) => {
-			// 	console.log(response);
-			// 	localStorage.setItem("refresh-token", res.data.data["api-token"]);
-			// 	dispatch(setUserInfo({ apiToken: response.data.data }));
-			// 	console.log(userInfo);
-			// });
+			tokenHttp.get(`/docs/service/token`).then((response) => {
+				console.log(response);
+				// localStorage.setItem("refresh-token", res.data.data["api-token"]);
+				// console.log(userInfo);
+			});
 			navigate("/");
 			alert("로그인 성공");
 		} catch (error) {
