@@ -9,7 +9,7 @@ import { logout } from "../../redux/userInfo";
 const NavBar = () => {
 	const dispatch = useDispatch();
 	const userInfo = useSelector((state) => {
-		return state.userInfo;
+		return state;
 	});
 	const onClickLogout = () => {
 		localStorage.removeItem("access-token");
