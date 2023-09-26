@@ -19,7 +19,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const userInfo = useSelector((state) => {
-		return state.userInfo;
+		return state;
 	});
 
 	async function onClickLogin() {
@@ -45,12 +45,6 @@ const Login = () => {
 			localStorage.setItem("refresh-token", res.data.data["refresh-token"]);
 			dispatch(setUserInfo({ accessToken: res.data.data["access-token"] }));
 			console.log(userInfo);
-			// 유저 데이터 redux에 저장
-			tokenHttp.get(`/docs/service/token`).then((response) => {
-				console.log(response);
-				localStorage.setItem("refresh-token", res.data.data["api-token"]);
-				console.log(userInfo);
-			});
 			navigate("/");
 			alert("로그인 성공");
 		} catch (error) {
