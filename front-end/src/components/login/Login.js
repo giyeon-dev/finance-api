@@ -31,7 +31,7 @@ const Login = () => {
         };
 
         try {
-            const res = await basicHttp.post(`/service/login`, userData);
+            const res = await basicHttp.post(`/docs/service/login`, userData);
             console.log(res);
             console.log('로그인 성공');
             navigate('/');
