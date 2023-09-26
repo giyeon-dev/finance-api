@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 // 토큰이 필요한 인증에 사용
 
-// const baseURL = process.env.REACT_APP_SERVER_URL;
-const baseURL = "https://j9b309.p.ssafy.io";
+const baseURL = process.env.REACT_APP_SERVER_URL;
+// const baseURL = "https://j9b309.p.ssafy.io";
 
 const tokenHttp = axios.create({
 	baseURL,
