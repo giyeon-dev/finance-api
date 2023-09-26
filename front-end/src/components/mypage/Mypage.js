@@ -11,7 +11,7 @@ const Mypage = () => {
     const [redirectURL, setRedirectURL] = useState('');
     useEffect(() => {
         const getApiToken = async () => {
-            const res = await tokenHttp.post(`/docs/service/token`);
+            const res = await tokenHttp.get(`/docs/service/token`);
             console.log(res);
         };
 
