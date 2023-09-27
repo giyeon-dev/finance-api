@@ -57,7 +57,7 @@ a {
     border-radius: 6px;
     cursor: pointer;
 }
-.logiapiTokenRefreshBtnnBtn:hover {
+.apiTokenRefreshBtnnBtn:hover {
     background-color: #182018;
     color: #fff;
 }

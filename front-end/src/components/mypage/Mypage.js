@@ -9,12 +9,25 @@ import tokenHttp from '../../api/tokenHttp';
 
 const Mypage = () => {
     const [apiToken, setApiToken] = useState('');
-    const [redirectURL, setRedirectURL] = useState('');
+    const [redirectURI, setRedirectURI] = useState('');
     const handleapiToken = (e) => {
         setApiToken(e.target.value);
     };
-    const handleRedirectURL = (e) => {
-        setRedirectURL(e.target.value);
+    const handleRedirectURI = (e) => {
+        setRedirectURI(e.target.value);
+    };
+	
+    const onClickAddRedirectURI = async () => {
+        try {
+            const res = await tokenHttp.post(`/docs/client`, {
+                web_server_redirect_uri: redirectURI,
+            });
+            console.log(res);
+        } catch (error) {
+            if (error.message === 'no token' || error.message === 'expire refresh-token') {
+                navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
+            }
+        }
     };
 
     const navigate = useNavigate();
@@ -60,7 +73,7 @@ const Mypage = () => {
             <div className={styles.mypageContainer}>
                 <div className={styles.logoText}>마이페이지</div>
                 <input
-                    className={styles.apiTokenInput}
+                    className={styles.inputBox}
                     value={apiToken}
                     onChange={handleapiToken}
                     type="text"
@@ -72,11 +85,14 @@ const Mypage = () => {
                 </button>
                 <input
                     className={styles.inputBox}
-                    value={redirectURL}
-                    onChange={handleRedirectURL}
+                    value={redirectURI}
+                    onChange={handleRedirectURI}
                     type="text"
                     placeholder=""
                 />
+                <button className={styles.apiTokenRefreshBtn} onClick={onClickAddRedirectURI}>
+                    RedirectURI 추가하기
+                </button>
             </div>
         </div>
     );
