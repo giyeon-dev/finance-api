@@ -40,13 +40,16 @@ const Mypage = () => {
 
     async function onClickapiTokenRefreshBtn() {
         try {
-            const res = await tokenHttp.get(`/docs/service/token`);
+            const res = await tokenHttp.post(`/docs/service/token`);
             console.log(res);
             console.log('api토큰 재발급 성공');
 
             localStorage.setItem('api-token', res.data.data);
             alert('api토큰 재발급 성공');
         } catch (error) {
+            if (error.message === 'no token' || error.message === 'expire refresh-token') {
+                navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
+            }
             console.error('api토큰 재발급  실패:', error);
             alert('api토큰 재발급  실패');
         }

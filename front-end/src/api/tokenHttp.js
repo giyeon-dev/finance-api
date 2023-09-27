@@ -2,7 +2,6 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import dayjs from 'dayjs';
-import { useNavigate, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/userInfo';
 
