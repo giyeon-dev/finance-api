@@ -24,7 +24,7 @@ const Mypage = () => {
             console.log(res);
             setClientList(res.data.data);
         } catch (error) {
-            if (error.message === 'no token' || error.message === 'expire refresh-token') {
+            if (error.message === 'no token' || error.message === 'expire token') {
                 navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
             }
         }
@@ -48,7 +48,7 @@ const Mypage = () => {
             );
             // window.location.reload(); // 페이지 새로고침
         } catch (error) {
-            if (error.message === 'no token' || error.message === 'expire refresh-token') {
+            if (error.message === 'no token' || error.message === 'expire token') {
                 navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
             }
         }
@@ -66,7 +66,7 @@ const Mypage = () => {
                 localStorage.setItem('api-token', res.data.data);
                 setApiToken(res.data.data);
             } catch (error) {
-                if (error.message === 'no token' || error.message === 'expire refresh-token') {
+                if (error.message === 'no token' || error.message === 'expire token') {
                     navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
                 }
             }
@@ -85,7 +85,7 @@ const Mypage = () => {
             localStorage.setItem('api-token', res.data.data);
             alert('api토큰 재발급 성공');
         } catch (error) {
-            if (error.message === 'no token' || error.message === 'expire refresh-token') {
+            if (error.message === 'no token' || error.message === 'expire token') {
                 navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
             }
             console.error('api토큰 재발급  실패:', error);
