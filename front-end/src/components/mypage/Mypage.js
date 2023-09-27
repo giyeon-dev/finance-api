@@ -30,11 +30,23 @@ const Mypage = () => {
         }
     };
     const onClickAddRedirectURI = async () => {
+        if (!redirectURI) {
+            // 내용이 없을 경우 처리
+            return;
+        }
         try {
             const res = await tokenHttp.post(`/docs/client`, {
                 web_server_redirect_uri: redirectURI,
             });
             console.log(res.data.data);
+            setClientList(
+                clientList.push({
+                    web_server_redirect_uri: redirectURI,
+                    client_id: res.data.data.client_id,
+                    secret_id: res.data.data.secret_id,
+                })
+            );
+            // window.location.reload(); // 페이지 새로고침
         } catch (error) {
             if (error.message === 'no token' || error.message === 'expire refresh-token') {
                 navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
@@ -111,6 +123,7 @@ const Mypage = () => {
                     <div key={client.client_id} className={client}>
                         <div>{client.web_server_redirect_uri}</div>
                         <div>{client.client_id}</div>
+                        <div>{client.secret_id}</div>
                     </div>
                 ))}
             </div>
