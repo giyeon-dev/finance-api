@@ -88,7 +88,7 @@ const Signup = () => {
                             value={ssafyArea}
                             onChange={handleSsafyArea}
                             className={styles.signupInput2}
-                            placeholder="싸피지역을 입력해주세요"
+                            placeholder="ex) 대전"
                         />
                     </div>
                     <div className={styles.classBox}>
@@ -101,7 +101,7 @@ const Signup = () => {
                             value={ssafyClass}
                             onChange={handleSsafyClass}
                             className={styles.signupInput2}
-                            placeholder="싸피반을 입력해주세요"
+                            placeholder="ex) 3"
                         />
                     </div>
                 </div>
