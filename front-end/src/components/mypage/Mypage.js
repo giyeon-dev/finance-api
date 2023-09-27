@@ -42,9 +42,9 @@ const Mypage = () => {
             setClientList((clientList) => [
                 ...clientList,
                 {
-                    webServerRedirectUri: redirectURI,
-                    clientId: res.data.data.clientId,
-                    secretId: res.data.data.secretId,
+                    web_server_redirectUri: res.data.data.webServerRedirectUri,
+                    client_id: res.data.data.clientId,
+                    secret_id: res.data.data.secretId,
                 },
             ]);
             // window.location.reload(); // 페이지 새로고침
