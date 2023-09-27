@@ -10,19 +10,31 @@ import tokenHttp from '../../api/tokenHttp';
 const Mypage = () => {
     const [apiToken, setApiToken] = useState('');
     const [redirectURI, setRedirectURI] = useState('');
+    const [clientList, setClientList] = useState([]);
     const handleapiToken = (e) => {
         setApiToken(e.target.value);
     };
     const handleRedirectURI = (e) => {
         setRedirectURI(e.target.value);
     };
-	
+
+    const getClientList = async () => {
+        try {
+            const res = await tokenHttp.get(`/docs/service/client`);
+            console.log(res);
+            setClientList(res.data.data);
+        } catch (error) {
+            if (error.message === 'no token' || error.message === 'expire refresh-token') {
+                navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
+            }
+        }
+    };
     const onClickAddRedirectURI = async () => {
         try {
             const res = await tokenHttp.post(`/docs/client`, {
                 web_server_redirect_uri: redirectURI,
             });
-            console.log(res);
+            console.log(res.data.data);
         } catch (error) {
             if (error.message === 'no token' || error.message === 'expire refresh-token') {
                 navigate('/login'); // 토큰없음이나 토큰만료 에러발생시 로그인화면으로 이동
@@ -48,6 +60,7 @@ const Mypage = () => {
             }
         };
         getApiToken();
+        getClientList();
     }, []);
     // input value 수정되면 set해주는 함수
 
@@ -93,6 +106,13 @@ const Mypage = () => {
                 <button className={styles.apiTokenRefreshBtn} onClick={onClickAddRedirectURI}>
                     RedirectURI 추가하기
                 </button>
+                {/*redirectURI 목록*/}
+                {clientList.map((client) => (
+                    <div key={client.client_id} className={client}>
+                        <div>{client.web_server_redirect_uri}</div>
+                        <div>{client.client_id}</div>
+                    </div>
+                ))}
             </div>
         </div>
     );
