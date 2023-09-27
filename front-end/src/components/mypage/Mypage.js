@@ -35,7 +35,7 @@ const Mypage = () => {
             return;
         }
         try {
-            const res = await tokenHttp.post(`/docs/client`, {
+            const res = await tokenHttp.post(`/docs/service/client`, {
                 web_server_redirect_uri: redirectURI,
             });
             console.log(res.data.data);
