@@ -39,13 +39,14 @@ const Mypage = () => {
                 web_server_redirect_uri: redirectURI,
             });
             console.log(res.data.data);
-            setClientList(
-                clientList.push({
+            setClientList((clientList) => [
+                ...clientList,
+                {
                     web_server_redirect_uri: redirectURI,
                     client_id: res.data.data.client_id,
                     secret_id: res.data.data.secret_id,
-                })
-            );
+                },
+            ]);
             // window.location.reload(); // 페이지 새로고침
         } catch (error) {
             if (error.message === 'no token' || error.message === 'expire token') {
