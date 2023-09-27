@@ -83,6 +83,7 @@ const Mypage = () => {
             console.log('api토큰 재발급 성공');
 
             localStorage.setItem('api-token', res.data.data);
+            setApiToken(res.data.data);
             alert('api토큰 재발급 성공');
         } catch (error) {
             if (error.message === 'no token' || error.message === 'expire token') {
