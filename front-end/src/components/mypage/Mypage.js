@@ -123,8 +123,11 @@ const Mypage = () => {
                 {/*redirectURI 목록*/}
                 {clientList.map((client) => (
                     <div key={client.client_id} className={client}>
+                        <div>uri</div>
                         <div>{client.web_server_redirect_uri}</div>
+                        <div>cli-id</div>
                         <div>{client.client_id}</div>
+                        <div>scr-id</div>
                         <div>{client.secret_id}</div>
                     </div>
                 ))}
