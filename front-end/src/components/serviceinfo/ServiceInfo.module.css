@@ -42,22 +42,45 @@
 }
 
 .cardList {
+  padding-top: 40px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4개의 열을 생성 */
-  gap: 16px; /* 열 간격 조절 */
+  grid-template-columns: repeat(2, 1fr); 
+  grid-column-gap: 0px; 
+  grid-row-gap: 80px; 
+  justify-content: center;
+  align-items: center;
+  
+  
+  
 }
 
 .card {
-  background: #f3f3f3;
-  border: 1px solid #ccc;
+  background-color: #282c34;
+  color: white;
   border-radius: 8px;
   padding: 16px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1),
-    -4px -4px 8px rgba(255, 255, 255, 0.5);
-  margin: 8px;
+  margin: 8px auto 8px auto; 
   display: flex;
   flex-direction: column;
-  max-width: calc(33.33% - 16px);
-  transition: all 0.3s ease-in-out;
+  width: 300px;
+  height: 240px;
+  position: relative;
+  
 }
+
+.button {
+  background-color: #353b45; 
+  color: #d6dae1; 
+  width: 80px;
+
+  text-align: center; 
+  position: absolute; 
+  bottom: 16px;
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+
+
+
 
