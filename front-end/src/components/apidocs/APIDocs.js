@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import styles from "./APIDocs.module.css";
-
-import basicHttp from "../../api/basicHttp";
 import SideBar from "./SideBar";
 import APIContent from "./APIContent";
 
 const APIDocs = () => {
+
   return (
     <div className={styles.backBody}>
       <div className={styles.boardContainer}>
@@ -15,7 +14,7 @@ const APIDocs = () => {
 
         <div className={styles.boardContent}>
           <SideBar />
-          <APIContent />
+          <APIContent/>
         </div>
       </div>
     </div>

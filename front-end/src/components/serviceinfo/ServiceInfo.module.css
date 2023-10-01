@@ -42,7 +42,9 @@
 }
 
 .cardList {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4개의 열을 생성 */
+  gap: 16px; /* 열 간격 조절 */
 }
 
 .card {
@@ -59,9 +61,3 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* 카드 호버 효과 */
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.2),
-    -8px -8px 12px rgba(255, 255, 255, 0.7); 
-}

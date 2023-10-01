@@ -18,12 +18,13 @@ function App() {
 	return (
 		<div className="App">
 			<Routes>
-				<Route path="/" element={<Home />} />
+				<Route path="" element={<Home />} />
 				<Route path="/signup" element={<Signup />}></Route>
 				<Route path="/login" element={<Login />}></Route>
 				<Route path="/mypage" element={<Mypage />}></Route>
 				<Route path="/serviceinfo" element={<ServiceInfo />}></Route>
-				<Route path="/apidock/*" element={<APIDocs />}></Route>
+				<Route path="/apidock" element={<APIDocs />} />
+				<Route path="/apidock/:api_docs_id" element={<APIDocs />}></Route>
 			</Routes>
 		</div>
 	);
