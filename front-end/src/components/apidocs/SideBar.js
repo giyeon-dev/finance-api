@@ -17,17 +17,22 @@ const SideBar = () => {
           const groupedTabs = [
             {
               title: "금융 더미 데이터",
+              url: "/apidock/financialdata",
               subTabs: responseData.data.slice(0, 2),
             },
-            { title: "환율 정보",
-             subTabs: responseData.data.slice(2, 10),
-             },
+            {
+              title: "환율 정보",
+              url: "/apidock/exchange",
+              subTabs: responseData.data.slice(2, 10),
+            },
             {
               title: "투자 자산 분석",
+              url: "/apidock/investment",
               subTabs: responseData.data.slice(10, 16),
             },
             {
               title: "소비 내역 분석",
+              url: "/apidock/consumption",
               subTabs: responseData.data.slice(16, 17),
             },
           ];
@@ -47,7 +52,9 @@ const SideBar = () => {
         <ul>
           {tabsData.map((group) => (
             <li key={group.title}>
-              <h3>{group.title}</h3>
+              <h3>
+                <NavLink to={group.url}>{group.title}</NavLink>
+              </h3>
               <ul>
                 {group.subTabs.map((tab) => (
                   <li key={tab.api_docs_id}>
@@ -67,6 +74,8 @@ const SideBar = () => {
         </ul>
       </aside>
     </div>
+
+    
   );
 };
 
