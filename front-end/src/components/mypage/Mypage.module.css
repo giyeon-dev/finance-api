@@ -74,4 +74,7 @@ a {
 }
 .clientContent {
     margin: 12px;
+    display: block;
+    width: 95%;
+    box-sizing: border-box;
 }
