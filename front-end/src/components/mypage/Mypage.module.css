@@ -62,19 +62,19 @@ a {
 	color: #fff;
 }
 .client {
-	width: 100%;
+	width: 95%;
 	margin: 10px;
 	padding: 10px;
 	border-radius: 6px;
 	background-color: #fff;
 }
 .clientText {
-    margin: 10px;
-    font-weight: 900;
+	margin: 10px;
+	font-weight: 900;
 }
 .clientContent {
-    margin: 12px;
-    display: block;
-    width: 95%;
-    box-sizing: border-box;
+	margin: 12px;
+	display: block;
+	width: 95%;
+	box-sizing: border-box;
 }

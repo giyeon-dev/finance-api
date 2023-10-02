@@ -44,7 +44,7 @@ const Mypage = () => {
 				{
 					web_server_redirectUri: res.data.data.webServerRedirectUri,
 					client_id: res.data.data.clientId,
-					secret_id: res.data.data.secretId,
+					secret_id: res.data.data.clientSecret,
 				},
 			]);
 			// window.location.reload(); // 페이지 새로고침
@@ -126,7 +126,7 @@ const Mypage = () => {
 						<label className={styles.clientText}>RedirectURI</label>
 						<input
 							className={styles.clientContent}
-							value={client.web_server_redirect_uri}
+							value={client.web_server_redirectUri}
 							type="text"
 							disabled
 						/>
