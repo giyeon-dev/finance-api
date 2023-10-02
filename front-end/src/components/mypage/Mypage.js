@@ -124,11 +124,16 @@ const Mypage = () => {
 				{clientList.map((client) => (
 					<div key={client.client_id} className={styles.client}>
 						<label className={styles.clientText}>RedirectURI</label>
-						<div className={styles.clientContent}>{client.web_server_redirect_uri}</div>
+						<input
+							className={styles.clientContent}
+							value={client.web_server_redirect_uri}
+							type="text"
+							disabled
+						/>
 						<label className={styles.clientText}>client-id</label>
-						<div className={styles.clientContent}>{client.client_id}</div>
+						<input className={styles.clientContent} value={client.client_id} type="text" disabled />
 						<label className={styles.clientText}>secret-id</label>
-						<div className={styles.clientContent}>{client.secret_id}</div>
+						<input className={styles.clientContent} value={client.secret_id} type="text" disabled />
 					</div>
 				))}
 			</div>
