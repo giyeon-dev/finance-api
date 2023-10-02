@@ -42,7 +42,7 @@ const Mypage = () => {
 			setClientList((clientList) => [
 				...clientList,
 				{
-					web_server_redirectUri: res.data.data.webServerRedirectUri,
+					web_server_redirect_uri: res.data.data.webServerRedirectUri,
 					client_id: res.data.data.clientId,
 					secret_id: res.data.data.clientSecret,
 				},
@@ -126,7 +126,7 @@ const Mypage = () => {
 						<label className={styles.clientText}>RedirectURI</label>
 						<input
 							className={styles.clientContent}
-							value={client.web_server_redirectUri}
+							value={client.web_server_redirect_uri}
 							type="text"
 							disabled
 						/>
