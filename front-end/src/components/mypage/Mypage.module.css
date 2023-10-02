@@ -62,8 +62,14 @@ a {
 	color: #fff;
 }
 .client{
+    width: 100%;
+    margin: 10px;
+    border-radius: 6px;
     background-color: #fff;
 }
 .clientText{
 
+}
+.clientContent{
+    
 }
