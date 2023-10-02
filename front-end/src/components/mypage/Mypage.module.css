@@ -61,15 +61,17 @@ a {
 	background-color: #182018;
 	color: #fff;
 }
-.client{
-    width: 100%;
+.client {
+	width: 100%;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 6px;
+	background-color: #fff;
+}
+.clientText {
     margin: 10px;
-    border-radius: 6px;
-    background-color: #fff;
+    font-weight: 900;
 }
-.clientText{
-
-}
-.clientContent{
-    
+.clientContent {
+    margin: 12px;
 }
