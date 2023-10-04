@@ -31,7 +31,7 @@ const ExCard = () => {
         <div className={styles.chartContainer}>
             <div className={styles.chartCard}>
                 <div className={styles.chartTitle}>
-                    <h1>환율</h1>
+                    <h1>카드내역</h1>
                     <p>
                         오늘의 환율 (하나은행 기준)
                         <br />
@@ -64,9 +64,9 @@ const ExCard = () => {
                         </div>
                     </div>
                     {/* <!-- Button --> */}
-                    {/* <div className={styles.link}>
-                        <a href="https://www.youtube.com/watch?v=wnJ6LuUFpMo">Listen</a>
-                    </div> */}
+                    <div className={styles.link}>
+                        <a href="https://www.youtube.com/watch?v=wnJ6LuUFpMo">내 카드내역 보기</a>
+                    </div>
                 </div>
 
                 {/* <!-- Separator --> */}
