@@ -14,7 +14,7 @@ const ExExchange = () => {
     useEffect(() => {
         const getExchangeAll = async () => {
             try {
-                const res = await basicHttp.get(`/exchange`);
+                const res = await basicHttp.get(`/api/exchange`);
                 console.log(res);
 
                 setExchangeAll(res.data.data);
