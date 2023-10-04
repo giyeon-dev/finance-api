@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./APIDocs.module.css";
 import SideBar from "./SideBar";
 import APIContent from "./APIContent";
 
 const APIDocs = () => {
+  const [docsId, setDocsId] = useState('');
+  const handleDocsId = (data) => {
+    console.log("main=====", data);
+    setDocsId(data);
+  };
 
   return (
     <div className={styles.backBody}>
@@ -13,8 +18,8 @@ const APIDocs = () => {
         </div>
 
         <div className={styles.boardContent}>
-          <SideBar />
-          <APIContent/>
+          <SideBar onSetId={handleDocsId}/>
+          <APIContent data={docsId}/>
         </div>
       </div>
     </div>
