@@ -11,3 +11,37 @@
     border-radius: 50px;
     color: white;
   }
+
+  .apiDataTable {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  .apiDataTable th {
+    background-color: #f0f0f0; 
+    color: #333; 
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .apiDataTable td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  
+  
+  }
+  
+  .apiDataTable td:first-child {
+    width: 20%; 
+  }
+  
+  .apiDataTable td:nth-child(2) {
+    width: 10%; 
+  }
+  
+  .apiDataTable td:nth-child(3) {
+    width: 10%; 
+  }
+  
