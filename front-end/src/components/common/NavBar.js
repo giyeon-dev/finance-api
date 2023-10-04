@@ -14,7 +14,10 @@ const NavBar = () => {
     const location = useLocation();
 
     // 특정 경로에서는 NavBar를 숨깁니다.
-    const hideNavBar = location.pathname === '/exexchange' || location.pathname === '/excard';
+    const hideNavBar =
+        location.pathname === '/exexchange' ||
+        location.pathname === '/excard' ||
+        location.pathname === '/excardcontent';
 
     const onClickLogout = () => {
         localStorage.removeItem('access-token');

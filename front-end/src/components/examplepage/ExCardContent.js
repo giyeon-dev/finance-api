@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './ExCard.module.css';
+import styles from './ExCardContent.module.css';
 import China from '../../assets/img/China.PNG';
 import JPN from '../../assets/img/JPN.PNG';
 import US from '../../assets/img/US.PNG';
@@ -8,7 +8,7 @@ import EU from '../../assets/img/EU.PNG';
 import basicHttp from '../../api/basicHttp';
 import tokenHttp from '../../api/tokenHttp';
 
-const ExCard = () => {
+const ExCardContent = () => {
     const [exchangeAllList, setExchangeAllList] = useState([]);
 
     useEffect(() => {
@@ -28,21 +28,12 @@ const ExCard = () => {
         <div className={styles.chartContainer}>
             <div className={styles.chartCard}>
                 <div className={styles.chartTitle}>
-                    <h1>카드 불러오기</h1>
-
-                    {/* <!-- Button --> */}
-                    <div className={styles.link}>
-                        <a
-                            href="https://j9b309.p.ssafy.io
-/oauth/authorize?response_type=code&client_id=test&redirect_uri=https://j9b309.p.ssafy.io/oauth/test&scope=read"
-                        >
-                            내 카드내역 불러오기
-                        </a>
-                    </div>
+                    <h1>카드내역</h1>
+                    <div>카드내역 뜰 칸</div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default ExCard;
+export default ExCardContent;
