@@ -48,15 +48,19 @@ const ExExchange = () => {
                     <div className={`${styles.chartName} ${styles.chartName1}`}>
                         <span> 미국</span>
                         {/* exchangeData가 null이 아닐 때만 해당 값을 출력 */}
-                        {exchangeData && <div className={styles.price}>{exchangeData.price}</div>}
+                        {exchangeData && <div className={styles.price}>{exchangeAllList[2].price}</div>}
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 살 때</div>
-                            {exchangeData && <div className={styles.priceContent}>{exchangeData.cashBuyPrice}</div>}
+                            {exchangeData && (
+                                <div className={styles.priceContent}>{exchangeAllList[2].cashBuyPrice}</div>
+                            )}
                         </div>
                         <div className={styles.separator}></div>
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 팔 때</div>
-                            {exchangeData && <div className={styles.priceContent}>{exchangeData.cashSellPrice}</div>}
+                            {exchangeData && (
+                                <div className={styles.priceContent}>{exchangeAllList[2].cashSellPrice}</div>
+                            )}
                         </div>
                     </div>
                     {/* <!-- Button --> */}
@@ -76,7 +80,21 @@ const ExExchange = () => {
                     {/* <!-- Name --> */}
                     <div className={`${styles.chartName} ${styles.chartName1}`}>
                         <span> 유럽</span>
-                        <p>엘리자베스김하영</p>
+                        {/* exchangeData가 null이 아닐 때만 해당 값을 출력 */}
+                        {exchangeData && <div className={styles.price}>{exchangeAllList[3].price}</div>}
+                        <div className={styles.priceContainer}>
+                            <div className={styles.priceTitle}>현찰 살 때</div>
+                            {exchangeData && (
+                                <div className={styles.priceContent}>{exchangeAllList[3].cashBuyPrice}</div>
+                            )}
+                        </div>
+                        <div className={styles.separator}></div>
+                        <div className={styles.priceContainer}>
+                            <div className={styles.priceTitle}>현찰 팔 때</div>
+                            {exchangeData && (
+                                <div className={styles.priceContent}>{exchangeAllList[3].cashSellPrice}</div>
+                            )}
+                        </div>
                     </div>
                     {/* <!-- Button --> */}
                     {/* <div className={styles.link}>
@@ -95,7 +113,21 @@ const ExExchange = () => {
                     {/* <!-- Name --> */}
                     <div className={`${styles.chartName} ${styles.chartName1}`}>
                         <span> 중국</span>
-                        <p>마오쩌둥정형준</p>
+                        {/* exchangeData가 null이 아닐 때만 해당 값을 출력 */}
+                        {exchangeData && <div className={styles.price}>{exchangeAllList[0].price}</div>}
+                        <div className={styles.priceContainer}>
+                            <div className={styles.priceTitle}>현찰 살 때</div>
+                            {exchangeData && (
+                                <div className={styles.priceContent}>{exchangeAllList[0].cashBuyPrice}</div>
+                            )}
+                        </div>
+                        <div className={styles.separator}></div>
+                        <div className={styles.priceContainer}>
+                            <div className={styles.priceTitle}>현찰 팔 때</div>
+                            {exchangeData && (
+                                <div className={styles.priceContent}>{exchangeAllList[0].cashSellPrice}</div>
+                            )}
+                        </div>
                     </div>
                     {/* <!-- Button --> */}
                     {/* <div className={styles.link}>
@@ -117,7 +149,21 @@ const ExExchange = () => {
                     {/* <!-- Name --> */}
                     <div className={`${styles.chartName} ${styles.chartName2}`}>
                         <span> 일본</span>
-                        <p>아베홍유빈</p>
+                        {/* exchangeData가 null이 아닐 때만 해당 값을 출력 */}
+                        {exchangeData && <div className={styles.price}>{exchangeAllList[1].price}</div>}
+                        <div className={styles.priceContainer}>
+                            <div className={styles.priceTitle}>현찰 살 때</div>
+                            {exchangeData && (
+                                <div className={styles.priceContent}>{exchangeAllList[1].cashBuyPrice}</div>
+                            )}
+                        </div>
+                        <div className={styles.separator}></div>
+                        <div className={styles.priceContainer}>
+                            <div className={styles.priceTitle}>현찰 팔 때</div>
+                            {exchangeData && (
+                                <div className={styles.priceContent}>{exchangeAllList[1].cashSellPrice}</div>
+                            )}
+                        </div>
                     </div>
                     {/* <!-- Button --> */}
                     {/* <div className={styles.link}>
