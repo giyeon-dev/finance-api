@@ -14,18 +14,18 @@ const SideBar = ({onSetId}) => {
   }
 
   useEffect(() => {
-    if(tab == 'exchange') handleTabClick("환율 정보");
-    else if(tab == 'investment') handleTabClick("투자 자산 분석");
-    else if(tab == 'consumption') handleTabClick("소비 내역 분석");
+    if(tab === 'exchange') handleTabClick("환율 정보");
+    else if(tab === 'investment') handleTabClick("투자 자산 분석");
+    else if(tab === 'consumption') handleTabClick("소비 내역 분석");
     else handleTabClick("금융 더미 데이터");
   }, [tab]);
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
     
-    if(tab == "환율 정보") handleSubClick(5);
-    else if(tab == "투자 자산 분석") handleSubClick(13);
-    else if(tab == "소비 내역 분석") handleSubClick(19);
+    if(tab === "환율 정보") handleSubClick(5);
+    else if(tab === "투자 자산 분석") handleSubClick(13);
+    else if(tab === "소비 내역 분석") handleSubClick(19);
     else handleSubClick(3);
   };
 
@@ -45,22 +45,22 @@ const SideBar = ({onSetId}) => {
           const groupedTabs = [
             {
               title: "금융 더미 데이터",
-              url: "/apidock/3",
+              url: "/apidock/financialdata",
               subTabs: responseData.data.slice(0, 2),
             },
             {
               title: "환율 정보",
-              url: "/apidock/5",
+              url: "/apidock/exchange",
               subTabs: responseData.data.slice(2, 10),
             },
             {
               title: "투자 자산 분석",
-              url: "/apidock/13",
+              url: "/apidock/investment",
               subTabs: responseData.data.slice(10, 16),
             },
             {
               title: "소비 내역 분석",
-              url: "/apidock/19",
+              url: "/apidock/consumption",
               subTabs: responseData.data.slice(16, 17),
             },
           ];
@@ -92,10 +92,10 @@ const SideBar = ({onSetId}) => {
               </h3>
               <ul>
                {
-                selectedTab==group.title &&
+                selectedTab === group.title &&
                  group.subTabs.map((tab) => (
                    <li key={tab.api_docs_id}>
-                    <div className={selectedSub==tab.api_docs_id? styles.selected: styles.noSelected} 
+                    <div className={selectedSub === tab.api_docs_id? styles.selected: styles.noSelected} 
                       onClick={() => handleSubClick(tab.api_docs_id)}>
                       {tab.title}
                     </div>

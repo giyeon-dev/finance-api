@@ -33,10 +33,7 @@ const APIContent = (props) => {
 
     if (api_docs_id) {
       getApiDocsData(api_docs_id);
-    } 
-    // else {
-    //   getApiDocsData("3");
-    // }
+    }
   }, [api_docs_id]);
 
   const isRequestTrueData = apiData.filter(
@@ -45,8 +42,6 @@ const APIContent = (props) => {
   const isRequestFalseData = apiData.filter(
     (dataItem) => dataItem.is_request === false
   );
-
-  // console.log(apiContent.return_example);
 
   return (
     <div>
@@ -85,10 +80,12 @@ const APIContent = (props) => {
         <p>호출 경로: {apiContent.endpoint}</p>
         <p>호출 결과: {apiContent.return_type}</p> */}
         <p>응답 예시</p>
-        <pre id="json" className={styles.code}>{apiContent.return_example}</pre>
+        <pre id="json" className={styles.code}>
+          {apiContent.return_example}
+        </pre>
 
         <h4>요청 메세지 명세</h4>
-        <table className={styles.apiDataTable}>
+        <table className={styles.apiRequestDataTable}>
           <thead>
             <tr>
               <th>항목명</th>
@@ -98,6 +95,18 @@ const APIContent = (props) => {
             </tr>
           </thead>
           <tbody>
+            {apiContent.authorization === "1" && (
+              <tr>
+                <td>authorization</td>
+                <td></td>
+                <td></td>
+                <td>
+                  사용자 OAuth2.0 인증을 통해 access-token을 받아야 합니다.{" "}
+                  <br />
+                  헤더 정보: Authorization Bearer {"${access-token}"}
+                </td>
+              </tr>
+            )}
             {isRequestTrueData.map((dataItem, index) => (
               <tr key={index}>
                 <td>{dataItem.title}</td>
@@ -110,11 +119,10 @@ const APIContent = (props) => {
         </table>
 
         <h4>응답 메세지 명세</h4>
-        <table className={styles.apiDataTable}>
+        <table className={styles.apiResponseDataTable}>
           <thead>
             <tr>
               <th>항목명</th>
-              <th>필수</th>
               <th>타입</th>
               <th>설명</th>
             </tr>
@@ -123,7 +131,6 @@ const APIContent = (props) => {
             {isRequestFalseData.map((dataItem, index) => (
               <tr key={index}>
                 <td>{dataItem.title}</td>
-                <td>{dataItem.is_essential ? " Y " : " N "}</td>
                 <td>{dataItem.type}</td>
                 <td>{dataItem.detail}</td>
               </tr>
