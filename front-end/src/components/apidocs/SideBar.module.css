@@ -1,13 +1,18 @@
 /* Sidebar.css */
 
+.selectedTab {
+  background-color:#202C3E;
+  padding: 10px 10px;
+}
+
 .selected {
-    background-color:#202C3E;
+    border-bottom: 2px solid white;
     padding: 10px 15px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
   }
   .noSelected {
     padding: 10px 15px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
   }
   .sidebar {
     width: 400px;
@@ -41,8 +46,8 @@
   
   
   .noSelected:hover {
-    background-color:#202C3E;
-    
+    /* background-color:#202C3E; */
+    border-bottom: 2px solid white;
   }
   
   .subTabs {
