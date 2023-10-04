@@ -14,18 +14,18 @@ const SideBar = ({onSetId}) => {
   }
 
   useEffect(() => {
-    if(tab == 'exchange') handleTabClick("환율 정보");
-    else if(tab == 'investment') handleTabClick("투자 자산 분석");
-    else if(tab == 'consumption') handleTabClick("소비 내역 분석");
+    if(tab === 'exchange') handleTabClick("환율 정보");
+    else if(tab === 'investment') handleTabClick("투자 자산 분석");
+    else if(tab === 'consumption') handleTabClick("소비 내역 분석");
     else handleTabClick("금융 더미 데이터");
   }, [tab]);
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
     
-    if(tab == "환율 정보") handleSubClick(5);
-    else if(tab == "투자 자산 분석") handleSubClick(13);
-    else if(tab == "소비 내역 분석") handleSubClick(19);
+    if(tab === "환율 정보") handleSubClick(5);
+    else if(tab === "투자 자산 분석") handleSubClick(13);
+    else if(tab === "소비 내역 분석") handleSubClick(19);
     else handleSubClick(3);
   };
 
@@ -92,10 +92,10 @@ const SideBar = ({onSetId}) => {
               </h3>
               <ul>
                {
-                selectedTab==group.title &&
+                selectedTab === group.title &&
                  group.subTabs.map((tab) => (
                    <li key={tab.api_docs_id}>
-                    <div className={selectedSub==tab.api_docs_id? styles.selected: styles.noSelected} 
+                    <div className={selectedSub === tab.api_docs_id? styles.selected: styles.noSelected} 
                       onClick={() => handleSubClick(tab.api_docs_id)}>
                       {tab.title}
                     </div>
