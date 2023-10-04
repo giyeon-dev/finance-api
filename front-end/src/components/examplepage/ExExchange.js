@@ -15,7 +15,7 @@ const ExExchange = () => {
         const getExchangeAll = async () => {
             try {
                 const res = await basicHttp.get(`/api/exchange`);
-                console.log(res);
+                console.log(res.data.data.list);
 
                 setExchangeAllList(res.data.data.list);
             } catch (error) {}
@@ -43,7 +43,7 @@ const ExExchange = () => {
                     {/* <!-- Name --> */}
                     <div className={`${styles.chartName} ${styles.chartName1}`}>
                         <span> 미국</span>
-                        <div className={styles.price}>{exchangeAllList[2].price}</div>
+                        {/* <div className={styles.price}>{exchangeAllList[2].price}</div> */}
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 살 때</div>
                             <div className={styles.priceContent}>2000</div>
