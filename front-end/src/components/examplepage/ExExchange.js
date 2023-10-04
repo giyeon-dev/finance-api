@@ -24,6 +24,9 @@ const ExExchange = () => {
         getExchangeAll();
     }, []);
 
+    // exchangeAllList 배열의 길이가 3보다 크거나 같을 때만 해당 값을 사용
+    const exchangeData = exchangeAllList.length >= 3 ? exchangeAllList[2] : null;
+
     return (
         <div className={styles.chartContainer}>
             <div className={styles.chartCard}>
@@ -44,15 +47,16 @@ const ExExchange = () => {
                     {/* <!-- Name --> */}
                     <div className={`${styles.chartName} ${styles.chartName1}`}>
                         <span> 미국</span>
-                        <div className={styles.price}>{exchangeAllList[2].price}</div>
+                        {/* exchangeData가 null이 아닐 때만 해당 값을 출력 */}
+                        {exchangeData && <div className={styles.price}>{exchangeData.price}</div>}
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 살 때</div>
-                            <div className={styles.priceContent}>{exchangeAllList[2].cashBuyPrice}</div>
+                            {exchangeData && <div className={styles.priceContent}>{exchangeData.cashBuyPrice}</div>}
                         </div>
                         <div className={styles.separator}></div>
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 팔 때</div>
-                            <div className={styles.priceContent}>{exchangeAllList[2].cashSellPrice}</div>
+                            {exchangeData && <div className={styles.priceContent}>{exchangeData.cashSellPrice}</div>}
                         </div>
                     </div>
                     {/* <!-- Button --> */}
