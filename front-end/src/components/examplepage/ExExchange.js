@@ -9,7 +9,7 @@ import basicHttp from '../../api/basicHttp';
 import tokenHttp from '../../api/tokenHttp';
 
 const ExExchange = () => {
-    const [exchangeAll, setExchangeAll] = useState([]);
+    const [exchangeAllList, setExchangeAllList] = useState([]);
 
     useEffect(() => {
         const getExchangeAll = async () => {
@@ -17,7 +17,7 @@ const ExExchange = () => {
                 const res = await basicHttp.get(`/api/exchange`);
                 console.log(res);
 
-                setExchangeAll(res.data.data);
+                setExchangeAllList(res.data.data.list);
             } catch (error) {}
         };
         getExchangeAll();
@@ -43,12 +43,21 @@ const ExExchange = () => {
                     {/* <!-- Name --> */}
                     <div className={`${styles.chartName} ${styles.chartName1}`}>
                         <span> 미국</span>
-                        <p>바이든이진호</p>
+                        <div className={styles.price}>{exchangeAllList[2].price}</div>
+                        <div className={styles.priceContainer}>
+                            <div className={styles.priceTitle}>현찰 살 때</div>
+                            <div className={styles.priceContent}>2000</div>
+                        </div>
+                        <div className={styles.separator}></div>
+                        <div className={styles.priceContainer}>
+                            <div className={styles.priceTitle}>현찰 팔 때</div>
+                            <div className={styles.priceContent}>2000</div>
+                        </div>
                     </div>
                     {/* <!-- Button --> */}
-                    <div className={styles.link}>
+                    {/* <div className={styles.link}>
                         <a href="https://www.youtube.com/watch?v=wnJ6LuUFpMo">Listen</a>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* <!-- Separator --> */}
@@ -65,9 +74,9 @@ const ExExchange = () => {
                         <p>엘리자베스김하영</p>
                     </div>
                     {/* <!-- Button --> */}
-                    <div className={styles.link}>
+                    {/* <div className={styles.link}>
                         <a href="https://www.youtube.com/watch?v=wnJ6LuUFpMo">Listen</a>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* <!-- Separator --> */}
@@ -84,9 +93,9 @@ const ExExchange = () => {
                         <p>마오쩌둥정형준</p>
                     </div>
                     {/* <!-- Button --> */}
-                    <div className={styles.link}>
+                    {/* <div className={styles.link}>
                         <a href="https://www.youtube.com/watch?v=wnJ6LuUFpMo">Listen</a>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* <!-- Separator --> */}
@@ -106,9 +115,9 @@ const ExExchange = () => {
                         <p>아베홍유빈</p>
                     </div>
                     {/* <!-- Button --> */}
-                    <div className={styles.link}>
+                    {/* <div className={styles.link}>
                         <a href="https://www.youtube.com/watch?v=wnJ6LuUFpMo">Listen</a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

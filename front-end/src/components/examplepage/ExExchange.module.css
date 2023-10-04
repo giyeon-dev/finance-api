@@ -69,11 +69,27 @@
     float: left;
     margin-top: 30px;
     font-size: 18px;
-    color: #a3a8cd;
+    color: #23252a;
 }
+
 .chartName span {
     font-weight: bold;
     color: black;
+}
+.price {
+    font-weight: bold;
+    color: #f57064;
+}
+.priceContainer {
+    display: flex;
+    width: 100%;
+    margin: 20px 40px 5px 40px;
+}
+.priceTitle {
+    margin: 20px 40px 5px 40px;
+}
+.priceContent {
+    margin: 20px 40px 5px 40px;
 }
 
 /* Button */
