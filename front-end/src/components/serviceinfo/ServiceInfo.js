@@ -32,10 +32,10 @@ const ServiceInfo = () => {
   const getTabUrls = () => {
     
     const urls = [
-      "/apidock/exchange",
-      "/apidock/financialdata",
-      "/apidock/investment",
-      "/apidock/consumption",
+      "/apidock/5",
+      "/apidock/3",
+      "/apidock/13",
+      "/apidock/19",
     ];
     setTabUrls(urls);
   };

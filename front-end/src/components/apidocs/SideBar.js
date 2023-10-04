@@ -18,23 +18,23 @@ const SideBar = () => {
           const groupedTabs = [
             {
               title: "금융 더미 데이터",
-              url: "/apidock/financialdata",
+              url: "/apidock/3",
               subTabs: responseData.data.slice(0, 2),
               
             },
             {
               title: "환율 정보",
-              url: "/apidock/exchange",
+              url: "/apidock/5",
               subTabs: responseData.data.slice(2, 10),
             },
             {
               title: "투자 자산 분석",
-              url: "/apidock/investment",
+              url: "/apidock/13",
               subTabs: responseData.data.slice(10, 16),
             },
             {
               title: "소비 내역 분석",
-              url: "/apidock/consumption",
+              url: "/apidock/19",
               subTabs: responseData.data.slice(16, 17),
             },
           ];
