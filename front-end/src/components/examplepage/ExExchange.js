@@ -9,14 +9,14 @@ import basicHttp from '../../api/basicHttp';
 import tokenHttp from '../../api/tokenHttp';
 
 const ExExchange = () => {
-    const [exchangeAllList, setExchangeAllList] = useState([]);
+    const [exchangeAllList, setExchangeAllList] = useState();
 
     useEffect(() => {
         const getExchangeAll = async () => {
             try {
                 const res = await basicHttp.get(`/api/exchange`);
                 console.log(res.data.data.list);
-                console.log(res.data.data.list[2]);
+                console.log(res.data.data.list[2].price);
 
                 setExchangeAllList(res.data.data.list);
             } catch (error) {}
@@ -44,15 +44,15 @@ const ExExchange = () => {
                     {/* <!-- Name --> */}
                     <div className={`${styles.chartName} ${styles.chartName1}`}>
                         <span> 미국</span>
-                        {/* <div className={styles.price}>{exchangeAllList[2].price}</div> */}
+                        <div className={styles.price}>{exchangeAllList[2].price}</div>
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 살 때</div>
-                            <div className={styles.priceContent}>2000</div>
+                            <div className={styles.priceContent}>{exchangeAllList[2].cashBuyPrice}</div>
                         </div>
                         <div className={styles.separator}></div>
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 팔 때</div>
-                            <div className={styles.priceContent}>2000</div>
+                            <div className={styles.priceContent}>{exchangeAllList[2].cashSellPrice}</div>
                         </div>
                     </div>
                     {/* <!-- Button --> */}
