@@ -5,7 +5,18 @@ import basicHttp from "../../api/basicHttp";
 
 const SideBar = () => {
   const [tabsData, setTabsData] = useState([]);
+  const [selectedTab, setSelectedTab] = useState("");
+  const [selectedSub, setSelectedSub] = useState("");
 
+  const handleTabClick = (tab) => {
+    setSelectedTab(tab);
+    console.log(tab);
+  };
+
+  const handleSubClick = (sub) => {
+    setSelectedSub(sub);
+    console.log(sub);
+  };
 
   useEffect(() => {
     const getApiDocsList = async () => {
@@ -18,23 +29,22 @@ const SideBar = () => {
           const groupedTabs = [
             {
               title: "금융 더미 데이터",
-              url: "/apidock/3",
+              url: "/apidock/financialdata",
               subTabs: responseData.data.slice(0, 2),
-              
             },
             {
               title: "환율 정보",
-              url: "/apidock/5",
+              url: "/apidock/exchange",
               subTabs: responseData.data.slice(2, 10),
             },
             {
               title: "투자 자산 분석",
-              url: "/apidock/13",
+              url: "/apidock/investment",
               subTabs: responseData.data.slice(10, 16),
             },
             {
               title: "소비 내역 분석",
-              url: "/apidock/19",
+              url: "/apidock/consumption",
               subTabs: responseData.data.slice(16, 17),
             },
           ];
@@ -45,8 +55,6 @@ const SideBar = () => {
       }
     };
 
-    
-
     getApiDocsList();
   }, []);
 
@@ -56,30 +64,41 @@ const SideBar = () => {
         <ul>
           {tabsData.map((group) => (
             <li key={group.title}>
-              <h3>
-                <NavLink to={group.url}>{group.title}</NavLink>
+              <h3
+                className={selectedTab == group.title ? styles.selectedTab : ""}
+              >
+                <NavLink
+                  to={group.url}
+                  onClick={() => handleTabClick(group.title)}
+                >
+                  {group.title}
+                </NavLink>
               </h3>
               <ul>
-                {group.subTabs.map((tab) => (
-                  <li key={tab.api_docs_id}>
-                    <NavLink
-                      to={`/apidock/${tab.api_docs_id}`}
-                      className={({ isActive }) => {
-                        return isActive ? styles.selected : styles.noSelected;
-                      }}
-                    >
-                      {tab.title}
-                    </NavLink>
-                  </li>
-                ))}
+                {selectedTab == group.title &&
+                  group.subTabs.map((tab) => (
+                    <li key={tab.api_docs_id}>
+                      <NavLink
+                        to={`/apidock/${tab.api_docs_id}`}
+                        className={`
+                   ${
+                     selectedSub == tab.api_docs_id
+                       ? styles.selected
+                       : styles.noSelected
+                   } 
+                   `}
+                        onClick={() => handleSubClick(tab.api_docs_id)}
+                      >
+                        {tab.title}
+                      </NavLink>
+                    </li>
+                  ))}
               </ul>
             </li>
           ))}
         </ul>
       </aside>
     </div>
-
-    
   );
 };
 
