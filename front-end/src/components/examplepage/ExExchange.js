@@ -15,7 +15,7 @@ const ExExchange = () => {
         const getExchangeAll = async () => {
             try {
                 const res = await basicHttp.get(`/api/exchange`);
-                console.log(res.data.data.list);
+                console.log(res.data.data.list[2]);
 
                 setExchangeAllList(res.data.data.list);
             } catch (error) {}
