@@ -47,12 +47,39 @@ const APIContent = () => {
       <div className={styles.contentBody}>
         <h3>{apiContent.title}</h3>
 
-        <p>기능: {apiContent.content}</p>
+        <table className={styles.firstTable}>
+          <thead>
+            <tr>
+              <th></th>
+              <th>설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>기능</td>
+              <td>{apiContent.content}</td>
+            </tr>
+            <tr>
+              <td>메서드</td>
+              <td>{apiContent.method}</td>
+            </tr>
+            <tr>
+              <td>호출 경로</td>
+              <td>{apiContent.endpoint}</td>
+            </tr>
+            <tr>
+              <td>응답 예시</td>
+              <td>{apiContent.return_type}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        {/* <p>기능: {apiContent.content}</p>
         <p>메서드: {apiContent.method}</p>
         <p>호출 경로: {apiContent.endpoint}</p>
-        <p>호출 결과: {apiContent.return_type}</p>
-        <p>응답 예시:</p>
-        <pre>{apiContent.return_example}</pre>
+        <p>호출 결과: {apiContent.return_type}</p> */}
+        <p>응답 예시</p>
+        <pre id="json" className={styles.code}>{apiContent.return_example}</pre>
 
         <h4>요청 메세지 명세</h4>
         <table className={styles.apiDataTable}>
