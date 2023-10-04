@@ -5,6 +5,18 @@ import basicHttp from "../../api/basicHttp";
 
 const SideBar = () => {
   const [tabsData, setTabsData] = useState([]);
+  const [selectedTab, setSelectedTab] = useState("");
+  const [selectedSub, setSelectedSub] = useState("");
+
+  const handleTabClick = (tab) => {
+    setSelectedTab(tab);
+    console.log(tab);
+  };
+
+  const handleSubClick = (sub) => {
+    setSelectedSub(sub);
+    console.log(sub);
+  }
 
   useEffect(() => {
     const getApiDocsList = async () => {
@@ -52,22 +64,28 @@ const SideBar = () => {
         <ul>
           {tabsData.map((group) => (
             <li key={group.title}>
-              <h3>
-                <NavLink to={group.url}>{group.title}</NavLink>
+              <h3 className={selectedTab==group.title? styles.selectedTab : ""} >
+                <NavLink 
+                  to={group.url}
+                  onClick={() => handleTabClick(group.title)}
+                >{group.title}</NavLink>
               </h3>
               <ul>
-                {group.subTabs.map((tab) => (
-                  <li key={tab.api_docs_id}>
-                    <NavLink
-                      to={`/apidock/${tab.api_docs_id}`}
-                      className={({ isActive }) => {
-                        return isActive ? styles.selected : styles.noSelected;
-                      }}
+               {
+                selectedTab==group.title &&
+                 group.subTabs.map((tab) => (
+                   <li key={tab.api_docs_id}>
+                   <NavLink
+                   to={`/apidock/${tab.api_docs_id}`}
+                   className={`
+                   ${selectedSub==tab.api_docs_id? styles.selected: styles.noSelected} 
+                   `}
+                   onClick={() => handleSubClick(tab.api_docs_id)}
                     >
-                      {tab.title}
+                    {tab.title}
                     </NavLink>
-                  </li>
-                ))}
+                    </li>
+                    ))}
               </ul>
             </li>
           ))}
