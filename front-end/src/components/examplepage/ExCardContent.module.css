@@ -7,9 +7,6 @@
 }
 
 .chartCard {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     width: 60%;
     background-color: #fbfbfb;
     padding: 50px;
@@ -53,9 +50,51 @@
     margin-left: 25px;
 }
 
+/* Cover */
+.chartCover {
+    float: left;
+    height: 150px;
+    margin-right: 25px;
+    padding-top: 12px;
+}
+
+.chartCover img {
+    height: 125px;
+}
+
+/* Name */
+.chartName {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #23252a;
+}
+
+.chartName span {
+    font-weight: bold;
+    color: black;
+}
+.price {
+    font-weight: bold;
+    color: #f57064;
+}
+.priceContainer {
+    display: flex;
+    width: 100%;
+    margin: 20px 40px 20px 40px;
+}
+.priceTitle {
+    margin: 0px 40px 0px 40px;
+}
+.priceContent {
+    margin: 0px 40px 0px 40px;
+}
+
 /* Button */
 .link {
-    text-align: center;
+    text-align: right;
     line-height: 150px;
     margin-right: 25px;
 }

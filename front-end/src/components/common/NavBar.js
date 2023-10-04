@@ -14,7 +14,10 @@ const NavBar = () => {
     const location = useLocation();
 
     // 특정 경로에서는 NavBar를 숨깁니다.
-    const hideNavBar = location.pathname === '/exexchange' || location.pathname === '/excard';
+    const hideNavBar =
+        location.pathname === '/exexchange' ||
+        location.pathname === '/excard' ||
+        location.pathname === '/excardcontent';
 
     const onClickLogout = () => {
         localStorage.removeItem('access-token');
@@ -36,6 +39,10 @@ const NavBar = () => {
                         </Link>
                         <Link className={styles.navMenu} to="/apidock/financialdata">
                             API문서
+                        </Link>
+
+                        <Link className={styles.navMenu} to="/oauthexplain">
+                            OAuth2.0
                         </Link>
                     </div>
                     {/* 로그인 상태에 따라 Login 또는 Mypage로 링크 변경 */}
