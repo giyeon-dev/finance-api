@@ -15,6 +15,7 @@ import APIDocs from './components/apidocs/APIDocs';
 // API문서
 // 예시 페이지
 import ExExchange from './components/examplepage/ExExchange';
+import ExCard from './components/examplepage/ExCard';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/apidock" element={<APIDocs />} />
                 <Route path="/apidock/:api_docs_id" element={<APIDocs />}></Route>
                 <Route path="/exexchange" element={<ExExchange />}></Route>
+                <Route path="/excard" element={<ExCard />}></Route>
             </Routes>
         </div>
     );
