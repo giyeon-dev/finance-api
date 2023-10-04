@@ -78,10 +78,10 @@ const ExCardContent = () => {
 				<div className={styles.separator}></div>
 
 				<div className={`${styles.chartBox} ${styles.chatBox1}`}>
-					<div className={`${styles.chartNumber} ${styles.chartNumber1}`}>
+					<div className={`${styles.chartNumber} ${styles.chartNumber1}`}></div>
+					<div className={`${styles.chartCover} ${styles.chartCover1}`}>
 						<img src={KB2} alt="03" />
 					</div>
-					<div className={`${styles.chartCover} ${styles.chartCover1}`}></div>
 					{/* <!-- Name --> */}
 					<div className={`${styles.chartName} ${styles.chartName1}`}>
 						{isCardListExisted && <span> {cardList[1].cardName}</span>}
@@ -109,10 +109,10 @@ const ExCardContent = () => {
 				<div className={styles.separator}></div>
 
 				<div className={`${styles.chartBox} ${styles.chatBox1}`}>
-					<div className={`${styles.chartNumber} ${styles.chartNumber1}`}>
+					<div className={`${styles.chartNumber} ${styles.chartNumber1}`}></div>
+					<div className={`${styles.chartCover} ${styles.chartCover1}`}>
 						<img src={KB3} alt="03" />
 					</div>
-					<div className={`${styles.chartCover} ${styles.chartCover1}`}></div>
 					{/* <!-- Name --> */}
 					<div className={`${styles.chartName} ${styles.chartName1}`}>
 						{isCardListExisted && <span> {cardList[2].cardName}</span>}
@@ -142,11 +142,11 @@ const ExCardContent = () => {
 				<div className={`${styles.chartBox} ${styles.chatBox2}`}>
 					{/* <!-- #02 --> */}
 					{/* <!-- Number--> */}
-					<div className={`${styles.chartNumber} ${styles.chartNumber2}`}>
+					<div className={`${styles.chartNumber} ${styles.chartNumber2}`}></div>
+					{/* <!-- Cover --> */}
+					<div className={`${styles.chartCover} ${styles.chartCover2}`}>
 						<img src={HD1} alt="03" />
 					</div>
-					{/* <!-- Cover --> */}
-					<div className={`${styles.chartCover} ${styles.chartCover2}`}></div>
 					{/* <!-- Name --> */}
 					<div className={`${styles.chartName} ${styles.chartName2}`}>
 						{isCardListExisted && <span> {cardList[3].cardName}</span>}
