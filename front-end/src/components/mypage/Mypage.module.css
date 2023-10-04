@@ -28,8 +28,8 @@ a {
 }
 .logoText {
     font-family: 'Pretendard-Regular';
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 25px;
+    margin: 20px auto 10px;
 }
 .inputBox {
     width: 100%;
