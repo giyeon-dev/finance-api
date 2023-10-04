@@ -3,23 +3,28 @@ import { useParams } from "react-router-dom";
 import styles from "./APIContent.module.css";
 import basicHttp from "../../api/basicHttp";
 
-const APIContent = () => {
-  const { api_docs_id } = useParams();
+const APIContent = (props) => {
+  const [api_docs_id, setApiId] = useState("");
+  // const { api_docs_id, setApiId } = useParams();
   const [apiContent, setApiContent] = useState([]);
   const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    setApiId(props.data);
+  }, [props]);
 
   useEffect(() => {
     const getApiDocsData = async (api_docs_id) => {
       try {
         const response = await basicHttp.get(`/docs/api/${api_docs_id}`);
         const responseData = response.data;
-        console.log("responseData", responseData.data);
-        console.log("api_docs_id", api_docs_id);
+        // console.log("responseData", responseData.data);
+        // console.log("api_docs_id", api_docs_id);
 
         if (responseData.data) {
           setApiContent(responseData.data);
           setApiData(responseData.data.api_data);
-          console.log(responseData.data.api_data);
+          // console.log(responseData.data.api_data);
         }
       } catch (error) {
         console.log("Error fetching API data", error);
@@ -28,9 +33,10 @@ const APIContent = () => {
 
     if (api_docs_id) {
       getApiDocsData(api_docs_id);
-    } else {
-      getApiDocsData("3");
-    }
+    } 
+    // else {
+    //   getApiDocsData("3");
+    // }
   }, [api_docs_id]);
 
   const isRequestTrueData = apiData.filter(
@@ -40,7 +46,7 @@ const APIContent = () => {
     (dataItem) => dataItem.is_request === false
   );
 
-  console.log(apiContent.return_example);
+  // console.log(apiContent.return_example);
 
   return (
     <div>

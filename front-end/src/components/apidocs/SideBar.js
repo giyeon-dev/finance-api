@@ -2,20 +2,36 @@ import React, { useEffect, useState } from "react";
 import styles from "./SideBar.module.css";
 import { NavLink } from "react-router-dom";
 import basicHttp from "../../api/basicHttp";
+import { useParams } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = ({onSetId}) => {
+  const { tab } = useParams();
   const [tabsData, setTabsData] = useState([]);
-  const [selectedTab, setSelectedTab] = useState("");
-  const [selectedSub, setSelectedSub] = useState("");
+  const [selectedTab, setSelectedTab] = useState("금융 더미 데이터");
+  const [selectedSub, setSelectedSub] = useState(3);
+  const setId = (data) => {
+    onSetId(data)
+  }
+
+  useEffect(() => {
+    if(tab == 'exchange') handleTabClick("환율 정보");
+    else if(tab == 'investment') handleTabClick("투자 자산 분석");
+    else if(tab == 'consumption') handleTabClick("소비 내역 분석");
+    else handleTabClick("금융 더미 데이터");
+  }, [tab]);
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
-    console.log(tab);
+    
+    if(tab == "환율 정보") handleSubClick(5);
+    else if(tab == "투자 자산 분석") handleSubClick(13);
+    else if(tab == "소비 내역 분석") handleSubClick(19);
+    else handleSubClick(3);
   };
 
   const handleSubClick = (sub) => {
     setSelectedSub(sub);
-    console.log(sub);
+    setId(sub);
   }
 
   useEffect(() => {
@@ -23,7 +39,7 @@ const SideBar = () => {
       try {
         const response = await basicHttp.get("/docs/api");
         const responseData = response.data;
-        console.log("responseData", responseData);
+        // console.log("responseData", responseData);
 
         if (responseData.data) {
           const groupedTabs = [
@@ -75,15 +91,17 @@ const SideBar = () => {
                 selectedTab==group.title &&
                  group.subTabs.map((tab) => (
                    <li key={tab.api_docs_id}>
-                   <NavLink
+                    <div className={selectedSub==tab.api_docs_id? styles.selected: styles.noSelected} 
+                      onClick={() => handleSubClick(tab.api_docs_id)}>
+                      {tab.title}
+                    </div>
+                   {/* <NavLink
                    to={`/apidock/${tab.api_docs_id}`}
-                   className={`
-                   ${selectedSub==tab.api_docs_id? styles.selected: styles.noSelected} 
-                   `}
+                   className={selectedSub==tab.api_docs_id? styles.selected: styles.noSelected} 
                    onClick={() => handleSubClick(tab.api_docs_id)}
                     >
                     {tab.title}
-                    </NavLink>
+                    </NavLink> */}
                     </li>
                     ))}
               </ul>
