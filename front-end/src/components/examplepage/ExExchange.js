@@ -48,15 +48,15 @@ const ExExchange = () => {
                     <div className={`${styles.chartName} ${styles.chartName1}`}>
                         <span> 미국</span>
                         {/* exchangeData가 null이 아닐 때만 해당 값을 출력 */}
-                        {exchangeData && <div className={styles.price}>{exchangeData.price}</div>}
+                        {/* {exchangeData && <div className={styles.price}>{exchangeData.price}</div>} */}
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 살 때</div>
-                            {exchangeData && <div className={styles.priceContent}>{exchangeData.cashBuyPrice}</div>}
+                            {/* {exchangeData && <div className={styles.priceContent}>{exchangeData.cashBuyPrice}</div>} */}
                         </div>
                         <div className={styles.separator}></div>
                         <div className={styles.priceContainer}>
                             <div className={styles.priceTitle}>현찰 팔 때</div>
-                            {exchangeData && <div className={styles.priceContent}>{exchangeData.cashSellPrice}</div>}
+                            {/* {exchangeData && <div className={styles.priceContent}>{exchangeData.cashSellPrice}</div>} */}
                         </div>
                     </div>
                     {/* <!-- Button --> */}
