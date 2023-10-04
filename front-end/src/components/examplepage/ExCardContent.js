@@ -46,7 +46,7 @@ const ExCardContent = () => {
 				</div>
 
 				<div className={`${styles.chartBox} ${styles.chatBox1}`}>
-					<div className={`${styles.chartNumber} ${styles.chartNumber1}`}>1</div>
+					<div className={`${styles.chartNumber} ${styles.chartNumber1}`}></div>
 					<div className={`${styles.chartCover} ${styles.chartCover1}`}>
 						<img src={KB1} alt="03" />
 					</div>
