@@ -15,6 +15,7 @@ const ExExchange = () => {
         const getExchangeAll = async () => {
             try {
                 const res = await basicHttp.get(`/api/exchange`);
+                console.log(res.data.data.list);
                 console.log(res.data.data.list[2]);
 
                 setExchangeAllList(res.data.data.list);
@@ -29,7 +30,7 @@ const ExExchange = () => {
                 <div className={styles.chartTitle}>
                     <h1>환율</h1>
                     <p>
-                        오늘의 환율
+                        오늘의 환율 (하나은행 기준)
                         <br />
                         (조회시간 : 2023-10-04 10:38:34)
                     </p>
