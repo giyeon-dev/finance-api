@@ -18,6 +18,8 @@ import ExExchange from './components/examplepage/ExExchange';
 import ExCard from './components/examplepage/ExCard';
 import ExCardContent from './components/examplepage/ExCardContent';
 
+import Oauth from './components/oauth/Oauth';
+
 function App() {
     return (
         <div className="App">
@@ -32,6 +34,7 @@ function App() {
                 <Route path="/exexchange" element={<ExExchange />}></Route>
                 <Route path="/excard" element={<ExCard />}></Route>
                 <Route path="/excardcontent" element={<ExCardContent />}></Route>
+                <Route path="/oauthexplain" element={<Oauth />}></Route>
             </Routes>
         </div>
     );
