@@ -25,7 +25,7 @@ function App() {
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/mypage" element={<Mypage />}></Route>
                 <Route path="/serviceinfo" element={<ServiceInfo />}></Route>
-                <Route path="/apidock" element={<APIDocs />} />
+                <Route path="/apidock/*" element={<APIDocs />} />
                 <Route path="/apidock/:api_docs_id" element={<APIDocs />}></Route>
                 <Route path="/exexchange" element={<ExExchange />}></Route>
             </Routes>

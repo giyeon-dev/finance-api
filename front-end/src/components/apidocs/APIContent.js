@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "./APIContent.module.css";
 import basicHttp from "../../api/basicHttp";
 
+
 const APIContent = () => {
   const { api_docs_id } = useParams();
   const [apiContent, setApiContent] = useState([]);
