@@ -14,6 +14,16 @@ const ExCardContent = () => {
             try {
                 const res = await basicHttp.get(`/oauth/access-token?code=${code}`);
                 console.log(res.data);
+                const res2 = await basicHttp.get(
+                    `https://j9b309.p.ssafy.io/api/cards?orgCode=example
+                    Orgcode&nextPage=2&limit=10`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${res.data.access_token}`, // Bearer 토큰 포함
+                        },
+                    }
+                );
+                console.log(res2.data);
             } catch (error) {}
         };
         getcardContent();
