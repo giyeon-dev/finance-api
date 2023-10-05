@@ -76,7 +76,7 @@ const Signup = () => {
         <div className={styles.signupBody}>
             <div className={styles.signupContainer}>
                 <div className={styles.logoText}>S.F.O.API</div>
-                <div className={styles.signupTitle}>회원가입</div>
+                {/* <div className={styles.signupTitle}>회원가입</div> */}
                 <div className={styles.signupBox2}>
                     <div className={styles.areaBox}>
                         <label htmlFor="nickname" className={styles.signupText2}>
