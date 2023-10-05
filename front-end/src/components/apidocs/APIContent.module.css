@@ -55,6 +55,8 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    line-height: 1.5;
+    word-break: keep-all;
   }
   
   .apiRequestDataTable th {
@@ -87,6 +89,8 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    line-height: 1.5;
+    word-break: keep-all;
   }
   
   .apiResponseDataTable th {
