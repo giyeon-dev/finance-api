@@ -1,0 +1,23 @@
+server:
+  port: 8089
+
+
+spring:
+  jackson:
+    time-zone: Asia/Seoul
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://j9b309.p.ssafy.io:3306/i9?serverTimezone=Asia/Seoul
+    username: i9B309
+    password: ***REMOVED***
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+
+jwt:
+  secretKey: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHVhb3JpYWkta3ByaW5nYm9vdC1qd3QtdHV0b3JpYWk=
+

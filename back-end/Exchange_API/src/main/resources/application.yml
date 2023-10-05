@@ -1,0 +1,30 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://j9b309.p.ssafy.io:3306/i9?serverTimezone=Asia/Seoul
+    username: i9B309
+    password: ***REMOVED***
+
+  jpa:
+    open-in-view: false
+#    show-sql: true
+    hibernate:
+      ddl-auto: update
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+  data:
+    redis:
+      host: j9b309.p.ssafy.io
+      port: 6379
+
+  # mongoDB
+#  data:
+#    mongodb:
+#      uri: mongodb://j9b309.p.ssafy.io:20000
+#      database: finance
+

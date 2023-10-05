@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://j9b309.p.ssafy.io:3306/i9?serverTimezone=UTC
+    username: i9B309
+    password: ***REMOVED***
+  jpa: # DB 쿼리 작성 없이 코드로 쉽게 데이터 처리를 위함.
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ***REMOVED***
+    password: ***REMOVED***
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8087 # 사용 포트
+  tomcat:
+    accesslog:
+      enabled: true # access 로그 추가
+    basedir: .
+
+url:
+  host: https://j9b309.p.ssafy.io
+#  host: http://localhost:8087
+
+
+RSA:
+  privatekey: i9ssafyi91234!!!
+
+
