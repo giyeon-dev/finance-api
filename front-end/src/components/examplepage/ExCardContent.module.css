@@ -13,8 +13,13 @@
 	box-shadow: 1px 1px 30px 10px #dfe2e4;
 	border-radius: 5px;
 	margin: 0 auto;
+	display: flex;
+    flex-direction: column;
+    width: 1000px;
 }
-
+.cardContent {
+	
+}
 /* Title */
 .chartTitle {
 	text-align: center;
@@ -32,8 +37,9 @@
 
 /* Ranking */
 .chartBox {
-	width: 80%;
-	height: 150px;
+	display: flex;
+	flex-direction: column;
+	width: 1000px;
 	margin: 50px auto;
 }
 
@@ -138,8 +144,45 @@
 	border: none;
 }
 
+.table {
+    width: 680px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 auto 20px;
+    word-break: keep-all;
+    line-height: 1.5;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+.table th {
+    background-color: #f0f0f0; 
+    color: #333; 
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+	text-align: center;
+}
+
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.table td:nth-child(1) {
+    width: 30%;
+}
+.table td:nth-child(2) {
+    width: 30%;
+}
+.table td:nth-child(3) {
+    width: 40%;
+}
+
 /* Mobile devices */
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
 	.chartCard {
 		width: 90%;
 		padding: 20px;
@@ -174,17 +217,19 @@
 		font-size: 12px;
 	}
 }
+*/
 
 /* Tablets and smaller laptops */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+/* @media screen and (min-width: 768px) and (max-width: 1023px) {
 	.chartCard {
 		width: 70%;
 	}
-}
+} */
 
 /* Larger laptops and desktops */
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) {
 	.chartCard {
 		width: 60%;
 	}
-}
+}  */
+
