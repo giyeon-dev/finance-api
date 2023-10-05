@@ -45,8 +45,8 @@ const APIContent = (props) => {
   );
 
   return (
-    <div>
-      <div className={styles.contentBody}>
+    <div className={styles.contentBody}>
+      <div>
         <h3>{apiContent.title}</h3>
         <div>{apiContent.content}</div>
 
@@ -73,10 +73,7 @@ const APIContent = (props) => {
           </tbody>
         </table>
 
-        {/* <p>기능: {apiContent.content}</p>
-        <p>메서드: {apiContent.method}</p>
-        <p>호출 경로: {apiContent.endpoint}</p>
-        <p>호출 결과: {apiContent.return_type}</p> */}
+     
         <p>응답 예시</p>
         <pre id="json" className={styles.code}>
           {apiContent.return_example}
