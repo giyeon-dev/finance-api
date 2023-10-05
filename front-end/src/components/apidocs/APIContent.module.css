@@ -23,6 +23,7 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    margin-top: 40px;
   }
 
   .firstTable th {
@@ -103,5 +104,5 @@
   
   
   .apiResponseDataTable td:first-child {
-    width: 15%; 
+    width: 23%; 
   }

@@ -8,6 +8,7 @@ const APIContent = (props) => {
   // const { api_docs_id, setApiId } = useParams();
   const [apiContent, setApiContent] = useState([]);
   const [apiData, setApiData] = useState([]);
+  const [nParam, setNParam] = useState(0);
 
   useEffect(() => {
     setApiId(props.data);
@@ -24,7 +25,7 @@ const APIContent = (props) => {
         if (responseData.data) {
           setApiContent(responseData.data);
           setApiData(responseData.data.api_data);
-          // console.log(responseData.data.api_data);
+          console.log(responseData.data.api_data);
         }
       } catch (error) {
         console.log("Error fetching API data", error);
@@ -47,6 +48,7 @@ const APIContent = (props) => {
     <div>
       <div className={styles.contentBody}>
         <h3>{apiContent.title}</h3>
+        <div>{apiContent.content}</div>
 
         <table className={styles.firstTable}>
           <thead>
@@ -56,10 +58,6 @@ const APIContent = (props) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>기능</td>
-              <td>{apiContent.content}</td>
-            </tr>
             <tr>
               <td>메서드</td>
               <td>{apiContent.method}</td>
@@ -84,10 +82,11 @@ const APIContent = (props) => {
           {apiContent.return_example}
         </pre>
 
-        <h4>요청 메세지 명세</h4>
-        <table className={styles.apiRequestDataTable}>
+        {(isRequestTrueData.length>0 || apiContent.authorization === "1") && <h4>요청 메세지 명세</h4>}
+        {(isRequestTrueData.length>0 || apiContent.authorization === "1") && <table className={styles.apiRequestDataTable}>
           <thead>
             <tr>
+              <th>HTTP</th>
               <th>항목명</th>
               <th> 필수 </th>
               <th>타입</th>
@@ -97,6 +96,7 @@ const APIContent = (props) => {
           <tbody>
             {apiContent.authorization === "1" && (
               <tr>
+                <td>Header</td>
                 <td>authorization</td>
                 <td></td>
                 <td></td>
@@ -109,6 +109,7 @@ const APIContent = (props) => {
             )}
             {isRequestTrueData.map((dataItem, index) => (
               <tr key={index}>
+                {index==0 && <td rowSpan={isRequestTrueData.length}>{dataItem.is_parameter? "Parameter" : "Body"}</td>}
                 <td>{dataItem.title}</td>
                 <td>{dataItem.is_essential ? " Y " : " N "}</td>
                 <td>{dataItem.type}</td>
@@ -116,7 +117,7 @@ const APIContent = (props) => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>}
 
         <h4>응답 메세지 명세</h4>
         <table className={styles.apiResponseDataTable}>
