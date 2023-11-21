@@ -51,45 +51,28 @@
 ## 🛠️주요 기능
 
 <details>
-<summary>1. 로그인</summary>
+<summary>1. API 문서</summary>
 
-![Alt text](readme사진/image-3.png)
-![Alt text](readme사진/image-21.png)
-![Alt text](readme사진/image-22.png)
+![SFOA_API문서](https://github.com/giyeonkwon013/gifupload/assets/122511574/76ba376a-d567-46fc-9384-b80d3bbce17c)
 </details></br>
 
 <details>
-<summary>2. 소개팅</summary>
+<summary>2. URI 등록</summary>
+![SFOA_URI등록](https://github.com/giyeonkwon013/gifupload/assets/122511574/d8515783-be3b-4a7f-a23a-2ad1962359d0)
 
-![Alt text](readme사진/image-4.png)
-![Alt text](readme사진/image-7.png)
-![Alt text](readme사진/image-6.png)
 </details></br>
 
 <details>
-<summary>3. 프로젝트</summary>
-![Alt text](readme사진/image-8.png)
-![Alt text](readme사진/image-9.png)
-![Alt text](readme사진/image-10.png)
-![Alt text](readme사진/image-11.png)
+<summary>3. 서비스 사용 예시 - 환율</summary>
+![SFOA_사용예시_환율](https://github.com/giyeonkwon013/gifupload/assets/122511574/47c8cb26-b81f-4b10-9dd7-c2077d900aa7)
 </details></br>
 
 <details>
-<summary>4. 채팅</summary>
-![Alt text](readme사진/image-12.png)
-![Alt text](readme사진/image-13.png)
-![Alt text](readme사진/image-14.png)
+<summary>4. 서비스 사용 예시 - 금융 더미 데이터</summary>
+![SFOA_사용예시_더미](https://github.com/giyeonkwon013/gifupload/assets/122511574/8663c1ad-2b6c-48ec-8256-d63b8c1b53f8)
 </details></br>
 
-<details>
-<summary>5. SSAFY-TOWN</summary>
-![Alt text](readme사진/image-15.png)
-![Alt text](readme사진/image-20.png)
-![Alt text](readme사진/image-16.png)
-![Alt text](readme사진/image-17.png)
-![Alt text](readme사진/image-18.png)
-![Alt text](readme사진/image-19.png)
-</details></br>
+
 
 ## 🖥️ 개발 환경
 
