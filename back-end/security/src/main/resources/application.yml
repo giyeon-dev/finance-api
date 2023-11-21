@@ -10,7 +10,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://j9b309.p.ssafy.io:3306/i9?serverTimezone=Asia/Seoul
     username: i9B309
-    password: ***REMOVED***
+    password: dkdlrnB309
 
   jpa:
     open-in-view: false

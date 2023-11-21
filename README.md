@@ -57,18 +57,25 @@
 </details></br>
 
 <details>
-<summary>2. URI 등록</summary>
+<summary>2. Oauth2.0 인증 과정 소개</summary>
+
+![SFOA_OAUTH문서](https://github.com/giyeonkwon013/gifupload/assets/122511574/a10ab544-23dd-456c-abaa-efc4ec43ec5a)
+</details></br>
+
+
+<details>
+<summary>3. URI 등록</summary>
 ![SFOA_URI등록](https://github.com/giyeonkwon013/gifupload/assets/122511574/d8515783-be3b-4a7f-a23a-2ad1962359d0)
 
 </details></br>
 
 <details>
-<summary>3. 서비스 사용 예시 - 환율</summary>
+<summary>4. 서비스 사용 예시 - 환율</summary>
 ![SFOA_사용예시_환율](https://github.com/giyeonkwon013/gifupload/assets/122511574/47c8cb26-b81f-4b10-9dd7-c2077d900aa7)
 </details></br>
 
 <details>
-<summary>4. 서비스 사용 예시 - 금융 더미 데이터</summary>
+<summary>5. 서비스 사용 예시 - 금융 더미 데이터</summary>
 ![SFOA_사용예시_더미](https://github.com/giyeonkwon013/gifupload/assets/122511574/8663c1ad-2b6c-48ec-8256-d63b8c1b53f8)
 </details></br>
 
