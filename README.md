@@ -35,7 +35,7 @@
 
 | **팀장** | 홍유빈 (BE : OAuth 2.0, docs API)   |
 |----------|---------------------|
-| **팀원** | 강현곤 (BE : )             |
+| **팀원** | 강현곤 (FE 총괄 )             |
 | **팀원** | 권기연 (BE : 개인 카드 목록 조회 및 카드 사용 내역 조회 API, FE : API 문서 웹페이지 화면 구현)  |
 | **팀원** | 김하영 (BE : 환율 API, 소비내역 분석 API, 카드 사용 내역 샤딩 )  |
 | **팀원** | 이진호 (BE : 한 눈에 보는 나의 투자정보 API )     |
@@ -114,16 +114,38 @@
 
 ## 🔧 서비스 아키텍쳐
 
-![Alt text](readme사진/image-23.png)
+![Alt text](images/architecture.png)
 
 ## 📑 API 명세서
 
-![Alt text](readme사진/image-2.png)
-
+<details>
+<summary>API</summary>
+![Alt text](images/api/api_1.png)
+![Alt text](images/api/api_2.png)
+![Alt text](images/api/api_3.png)
+</details>
 
 ## ✨ERD
 
-![Alt text](readme사진/image.png)
+<details>
+<summary>ERD</summary>
+
+![Alt text](images/erd/erd_total.png)
+![Alt text](images/erd/erd_1.png)
+![Alt text](images/erd/erd_2.png)
+![Alt text](images/erd/erd_3.png)
+![Alt text](images/erd/erd_4.png)
+![Alt text](images/erd/erd_5.png)
+![Alt text](images/erd/erd_6.png)
+![Alt text](images/erd/erd_7.png)
+![Alt text](images/erd/erd_8.png)
+![Alt text](images/erd/erd_9.png)
+![Alt text](images/erd/erd_10.png)
+![Alt text](images/erd/erd_11.png)
+![Alt text](images/erd/erd_12.png)
+![Alt text](images/erd/erd_13.png)
+![Alt text](images/erd/erd_14.png)
+</details>
 
 ## 📚 커밋 컨벤션 규칙
 
@@ -164,5 +186,4 @@
 | React                 | 3000  |
 | MySQL                 | 3306  |
 | Jenkins               | 9090  |
-
 
