@@ -120,6 +120,7 @@
 
 <details>
 <summary>API</summary>
+ 
 ![Alt text](images/api/api_1.png)
 ![Alt text](images/api/api_2.png)
 ![Alt text](images/api/api_3.png)
