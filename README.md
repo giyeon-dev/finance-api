@@ -1,11 +1,5 @@
 # 👨‍💻 SSAFY FINANCE OPEN API
 **마이데이터 규격에 맞게 금융 데이터를 제공하는 OPEN API**<br><br>
-**바로가기 : https://j9b309.p.ssafy.io**
-<br>
-
-### ⬇️⬇️I DEV U 의 소개 UCC (youtube로 보러가기)⬇️⬇️
-[![동영상 제목](https://img.youtube.com/vi/Qzm23sjetHo/0.jpg)](https://www.youtube.com/watch?v=Qzm23sjetHo)
-
 
 **목표 : 다양한 금융 데이터를 제공하는 OPEN API**
 
